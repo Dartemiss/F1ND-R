@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    private static GameManager _instance;
+    public static GameManager _instance;
 
     private FlamaTimer levelTimer;
     float currentScore = 0f;

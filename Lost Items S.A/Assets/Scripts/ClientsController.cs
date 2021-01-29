@@ -9,17 +9,20 @@ public class ClientsController : MonoBehaviour
     List<CommandController> commands = new List<CommandController>();
     List<LostObject.LostObjectType> safataBro = new List<LostObject.LostObjectType>();
 
-    public GameManager gameManager;
-
     public GameObject commandPrefab;
 
     uint minNumberOfObjectsPerCommand = 1;
     uint maxNumberOfObjectsPerCommand = 1;
 
+    uint maxCommands = 5;
+    FlamaTimer nextCommandTimer;
+
     // Start is called before the first frame update
     void Start()
     {
        CreateCommand();
+
+       //nextCommandTimer
     }
 
     // Update is called once per frame
@@ -32,7 +35,7 @@ public class ClientsController : MonoBehaviour
             if(timeOut)
             {
                 //Lose points
-                gameManager.SubstractScore(50f);
+                GameManager._instance.SubstractScore(50f);
 
                 commands.RemoveAt(i);
                 break;
@@ -61,12 +64,12 @@ public class ClientsController : MonoBehaviour
         if(succes)
         {
             //Earn points
-            gameManager.AddScore(commandScore);
+            GameManager._instance.AddScore(commandScore);
         }
         else
         {
             //Lose points
-            gameManager.SubstractScore(50f);
+            GameManager._instance.SubstractScore(50f);
         }
     }
 
