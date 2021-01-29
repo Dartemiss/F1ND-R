@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainMenuManager : MonoBehaviour
+public class TittleScreenManager : MonoBehaviour
 {
-    public static MainMenuManager instance = null;
+    public static TittleScreenManager instance = null;
 
     //Awake is always called before any Start functions
     void Awake()
@@ -79,5 +79,15 @@ public class MainMenuManager : MonoBehaviour
         }
 
         mainMenuButtons[hoveredButtonIndex].onClick.Invoke();
+    }
+
+    public void Close()
+    {
+        transform.gameObject.SetActive(false);
+    }
+
+    public void Open()
+    {
+        transform.gameObject.SetActive(true);
     }
 }
