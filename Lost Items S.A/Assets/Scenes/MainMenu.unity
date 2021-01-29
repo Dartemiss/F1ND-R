@@ -932,7 +932,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1405251808}
-        m_TargetAssemblyTypeName: GameManagerProvisional, Assembly-CSharp
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: CloseGame
         m_Mode: 1
         m_Arguments:
@@ -1191,7 +1191,7 @@ GameObject:
   - component: {fileID: 1405251807}
   - component: {fileID: 1405251808}
   m_Layer: 0
-  m_Name: GameManagerProvisional
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1220,7 +1220,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1405251806}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77ddcfc7dff8fbe4793c670551398083, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f9dccaff1bfcef4fa1752c37457d7e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1518675400

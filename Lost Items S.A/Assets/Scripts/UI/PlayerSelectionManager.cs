@@ -37,6 +37,16 @@ public class PlayerSelectionManager : MonoBehaviour
         playerCardManagers[lastActivatedCardManager].Activate(InputType.KEYBOARD);
     }
 
+    public void CancelPlayerSelection()
+    {
+        MainMenuManager.instance.OpenTitleScreen();
+    }
+
+    public void ConfirmPlayers()
+    {
+        GameManager.instance.LoadMainLevel();
+    }
+
     public void Close()
     {
         transform.gameObject.SetActive(false);
