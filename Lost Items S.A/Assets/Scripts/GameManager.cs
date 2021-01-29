@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     private FlamaTimer levelTimer;
-    float currentScore = 0f;
+    int currentScore = 0;
     float totalLevelTime = 300f;
 
     // Start is called before the first frame update
@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         HUDManager.instance.UpdateTime(levelTimer.currentTimeRemaining);
+        HUDManager.instance.UpdateScore(currentScore);
 
         if(levelTimer.HasTimedOut())
         {
@@ -41,12 +42,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddScore(float scoreBonus)
+    public void AddScore(int scoreBonus)
     {
         currentScore += scoreBonus;
     }
 
-    public void SubstractScore(float scorePenalty)
+    public void SubstractScore(int scorePenalty)
     {
         currentScore -= scorePenalty;
     }

@@ -20,6 +20,7 @@ public class HUDManager : MonoBehaviour
     }
 
     public TimerDisplayManager timerDisplayManager;
+    public ScoreDisplayManager scoreDisplayManager;
 
     // Start is called before the first frame update
     void Start()
@@ -36,5 +37,10 @@ public class HUDManager : MonoBehaviour
     public void UpdateTime(float time)
     {
         timerDisplayManager.SetTime(time);
+    }
+
+    public void UpdateScore(int score)
+    {
+        scoreDisplayManager.SetScore(score);
     }
 }
