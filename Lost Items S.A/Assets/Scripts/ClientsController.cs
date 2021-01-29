@@ -15,6 +15,7 @@ public class ClientsController : MonoBehaviour
     uint maxNumberOfObjectsPerCommand = 1;
 
     uint maxCommands = 5;
+    public uint numSuccesCommands = 0;
     FlamaTimer nextCommandTimer;
 
     // Start is called before the first frame update
@@ -22,12 +23,23 @@ public class ClientsController : MonoBehaviour
     {
        CreateCommand();
 
-       //nextCommandTimer
+       nextCommandTimer = transform.gameObject.AddComponent<FlamaTimer>();
+       nextCommandTimer.StartTimer(10f); 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(nextCommandTimer.HasTimedOut())
+        {
+            if(commands.Count < maxCommands)
+            {
+                Debug.Log("Create Command!");
+                CreateCommand();
+            }
+            nextCommandTimer.Reset();
+        }
+
         for(int i = 0; i < commands.Count; ++i)
         {
             bool timeOut = commands[i].UpdateCommand();
@@ -35,9 +47,12 @@ public class ClientsController : MonoBehaviour
             if(timeOut)
             {
                 //Lose points
-                GameManager._instance.SubstractScore(50f);
-
+                Debug.Log("TimeOut, you lose 50 points.");
+                GameManager.instance.SubstractScore(50);
+                commands[i].DestroyCommand();
                 commands.RemoveAt(i);
+
+                numSuccesCommands++;
                 break;
             }
         }
@@ -46,7 +61,7 @@ public class ClientsController : MonoBehaviour
     void DeliverCommand()
     {
         bool succes = false;
-        float commandScore = 0;
+        int commandScore = 0;
 
         for(int i = 0; i < commands.Count; ++i)
         {
@@ -56,6 +71,7 @@ public class ClientsController : MonoBehaviour
                 succes = true;
                 commandScore = commands[i].commandScore;
 
+                commands[i].DestroyCommand();
                 commands.RemoveAt(i);
                 break;
             }
@@ -64,12 +80,15 @@ public class ClientsController : MonoBehaviour
         if(succes)
         {
             //Earn points
-            GameManager._instance.AddScore(commandScore);
+            GameManager.instance.AddScore(commandScore);
+            numSuccesCommands++;
+
+            CheckDifficulty();
         }
         else
         {
             //Lose points
-            GameManager._instance.SubstractScore(50f);
+            GameManager.instance.SubstractScore(50);
         }
     }
 
@@ -87,7 +106,9 @@ public class ClientsController : MonoBehaviour
 
         GameObject commandObject = Instantiate(commandPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         CommandController command = commandObject.GetComponent<CommandController>();
-        command.StartCommand(30f, commandItems);
+        
+        float diff = Random.Range(-10f, 10f);
+        command.StartCommand(45f + diff, commandItems);
 
         commands.Add(command);
 
@@ -98,4 +119,22 @@ public class ClientsController : MonoBehaviour
         LostObject.LostObjectType randomID = (LostObject.LostObjectType)Random.Range(0, maxTypeOfObjects);
         commandItems.Add(randomID);
     }
+
+    void CheckDifficulty()
+    {
+        if(numSuccesCommands > 12)
+        {
+            maxNumberOfObjectsPerCommand = 3;
+            minNumberOfObjectsPerCommand = 2;
+        }
+        else if(numSuccesCommands > 8)
+        {
+            maxNumberOfObjectsPerCommand = 3;
+        }
+        else if(numSuccesCommands > 3)
+        {
+            maxNumberOfObjectsPerCommand = 2;
+        }
+    }
+           
 }
