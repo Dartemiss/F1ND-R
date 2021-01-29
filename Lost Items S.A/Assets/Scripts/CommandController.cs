@@ -6,13 +6,18 @@ public class CommandController : MonoBehaviour
 {
 
     FlamaTimer commandTimer;
-    List<LostObject.LostObjectType> commandItems;
+    List<LostObject.LostObjectType> commandItems = new List<LostObject.LostObjectType>();
+    public float commandScore = 0f;
     
     public void StartCommand(float time, List<LostObject.LostObjectType> items)
     {
+        commandTimer = gameObject.GetComponent<FlamaTimer>();
+        
         commandTimer.StartTimer(time);
         items = commandItems;
         items.Sort();
+
+        commandScore = 300f + items.Count * 100f;
     }
 
     public bool UpdateCommand()
