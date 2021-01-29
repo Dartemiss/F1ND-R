@@ -32,7 +32,7 @@ public class ClientsController : MonoBehaviour
             if(timeOut)
             {
                 //Lose points
-                gameManager.SubstractScore(50f);
+                gameManager.SubstractScore(50);
 
                 commands.RemoveAt(i);
                 break;
@@ -43,7 +43,7 @@ public class ClientsController : MonoBehaviour
     void DeliverCommand()
     {
         bool succes = false;
-        float commandScore = 0;
+        int commandScore = 0;
 
         for(int i = 0; i < commands.Count; ++i)
         {
@@ -66,7 +66,7 @@ public class ClientsController : MonoBehaviour
         else
         {
             //Lose points
-            gameManager.SubstractScore(50f);
+            gameManager.SubstractScore(50);
         }
     }
 
