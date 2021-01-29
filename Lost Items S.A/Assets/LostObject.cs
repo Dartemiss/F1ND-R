@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class LostObject : MonoBehaviour
 {
-
-    enum LostObjectType
+    public enum LostObjectType
     {
         FOO_1,
         FOO_2,
         FOO_3
     }
+
+    public LostObjectType lostObjectType;
 
     // Start is called before the first frame update
     void Start()
