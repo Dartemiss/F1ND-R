@@ -6,7 +6,7 @@ public class CommandController : MonoBehaviour
 {
 
     FlamaTimer commandTimer;
-    List<LostObject.LostObjectType> commandItems = new List<LostObject.LostObjectType>();
+    public List<LostObject.LostObjectType> commandItems = new List<LostObject.LostObjectType>();
     public int commandScore = 0;
     
     public void StartCommand(float time, List<LostObject.LostObjectType> items)
