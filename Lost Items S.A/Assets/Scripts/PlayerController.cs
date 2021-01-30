@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     public LayerMask m_LayerMask;
 
     public GameObject currentTargetedObject = null;
-    public DeliverableTableController deliverableTable;
 
     private bool carryingObject = false;
 
@@ -102,19 +101,14 @@ public class PlayerController : MonoBehaviour
         if (currentTargetedObject.tag == "LostItem")
         {
             //Check if object is in Counter
-            deliverableTable.PickObject(currentTargetedObject);
+            DeliverableTableController.instance.PickObject(currentTargetedObject);
 
             currentTargetedObject.transform.parent = gameObject.transform;
             currentTargetedObject.transform.position = objectSlot.position;
             currentLostObject = currentTargetedObject.GetComponent<LostObject>();
+            currentTargetedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             currentLostGameObject = currentTargetedObject;
             carryingObject = true;
-
-            LostObject lostObjectScript = currentTargetedObject.GetComponent<LostObject>();
-            if (lostObjectScript.IsInConveyorBelt())
-            {
-                lostObjectScript.RemoveFromConveyorBelt();
-            }
         }
     }
 
@@ -127,7 +121,7 @@ public class PlayerController : MonoBehaviour
             {
                 //currentLostGameObject.transform.parent = currentTargetedObject.transform;
                 //currentLostGameObject.transform.position = currentTargetedObject.transform.position;
-                if(!deliverableTable.PutObject(currentLostGameObject, currentTargetedObject, currentLostObject))
+                if(!DeliverableTableController.instance.PutObject(currentLostGameObject, currentTargetedObject, currentLostObject))
                 {
                     Debug.Log("Cannot place object here.");
                 }
@@ -136,9 +130,12 @@ public class PlayerController : MonoBehaviour
             else
             {
                 currentLostGameObject.transform.parent = null;
+                currentLostGameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                /*
                 Vector3 newPosition = currentLostGameObject.transform.position;
                 newPosition.y = 0.92f;
                 currentLostGameObject.transform.position = newPosition;
+                */
             }
 
 
@@ -152,7 +149,7 @@ public class PlayerController : MonoBehaviour
     {
         if(currentTargetedObject != null && currentTargetedObject.tag == "TableButton")
         {
-            deliverableTable.DeliverCommand();
+            DeliverableTableController.instance.DeliverCommand();
             return;
         }
 

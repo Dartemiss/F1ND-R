@@ -10,8 +10,7 @@ public class PlayerSelectionManager : MonoBehaviour
         CONTROLLER
     }
 
-    public List<PlayerCardManager> playerCardManagers;
-    int lastActivatedCardManager = 0;
+    public GameObject canvas;
 
     // Start is called before the first frame update
     void Start()
@@ -23,18 +22,6 @@ public class PlayerSelectionManager : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void AddNewController()
-    {
-        ++lastActivatedCardManager;
-        playerCardManagers[lastActivatedCardManager].Activate(InputType.CONTROLLER);
-    }
-
-    public void AddNewKeyboard()
-    {
-        ++lastActivatedCardManager;
-        playerCardManagers[lastActivatedCardManager].Activate(InputType.KEYBOARD);
     }
 
     public void CancelPlayerSelection()
@@ -55,5 +42,7 @@ public class PlayerSelectionManager : MonoBehaviour
     public void Open()
     {
         transform.gameObject.SetActive(true);
+        PlayerConfigurationManager.Instance.StartPlayerConfiguration();
+        canvas.SetActive(false);
     }
 }
