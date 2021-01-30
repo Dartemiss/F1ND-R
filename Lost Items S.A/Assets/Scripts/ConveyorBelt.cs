@@ -25,13 +25,13 @@ public class ConveyorBelt : MonoBehaviour
     }
 
     public List<float> beltTimeStamps;
-    List<ConveyorBeltObject> conveyorBeltOjects;
+    List<ConveyorBeltObject> conveyorBeltObjects;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        conveyorBeltOjects = new List<ConveyorBeltObject>();
+        conveyorBeltObjects = new List<ConveyorBeltObject>();
         beltTimeStamps = new List<float>();
 
         for (int i = 0; i < beltPath.Count; ++i)
@@ -60,9 +60,10 @@ public class ConveyorBelt : MonoBehaviour
             SpawnLostObject(LostObject.LostObjectType.FOO_1);
         }
 
-        for (int i = 0; i < conveyorBeltOjects.Count; ++i)
+        List<ConveyorBeltObject> objectsToRemove = new List<ConveyorBeltObject>();
+        for (int i = 0; i < conveyorBeltObjects.Count; ++i)
         {
-            ConveyorBeltObject spawnedLostObject = conveyorBeltOjects[i];
+            ConveyorBeltObject spawnedLostObject = conveyorBeltObjects[i];
 
             spawnedLostObject.elapsedTime = spawnedLostObject.elapsedTime + Time.deltaTime;
             while (
@@ -72,8 +73,12 @@ public class ConveyorBelt : MonoBehaviour
             {
                 ++spawnedLostObject.currentTimeStampIndex;
             }
+
+
             if (spawnedLostObject.currentTimeStampIndex == beltTimeStamps.Count - 1)
             {
+                objectsToRemove.Add(conveyorBeltObjects[i]);
+                Debug.Log("Hola");
 
             }
             else
@@ -86,8 +91,14 @@ public class ConveyorBelt : MonoBehaviour
                 Vector3 nextBeltPosition = beltPath[spawnedLostObject.currentTimeStampIndex + 1].position;
                 spawnedLostObject.lostObject.transform.position = Vector3.Lerp(previousBeltPosition, nextBeltPosition, progress);
 
-                conveyorBeltOjects[i] = spawnedLostObject;
+                conveyorBeltObjects[i] = spawnedLostObject;
             }
+        }
+
+        conveyorBeltObjects.RemoveAll(objectsToRemove.Contains);
+        foreach (ConveyorBeltObject objectToRemove in objectsToRemove)
+        {
+            Destroy(objectToRemove.lostObject);
         }
     }
 
@@ -96,7 +107,6 @@ public class ConveyorBelt : MonoBehaviour
         GameObject spawnedGameObject = LostObjectFactory.instance.CreateLostObject(lostObjectType);
         spawnedGameObject.transform.position = lostObjectSpawnPoint.position;
 
-        conveyorBeltOjects.Add(new ConveyorBeltObject(spawnedGameObject, 0));
-        Debug.Log("Hola");
+        conveyorBeltObjects.Add(new ConveyorBeltObject(spawnedGameObject, 0));
     }
 }
