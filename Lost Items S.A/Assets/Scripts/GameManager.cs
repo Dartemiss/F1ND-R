@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public bool isRunning; 
+
     private FlamaTimer levelTimer;
     public int currentScore = 0;
     float totalLevelTime = 300f;
@@ -18,6 +20,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
+            isRunning = false;
         }
         else
         {
@@ -31,6 +34,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!isRunning)
+        {
+            return;
+        }
+
         HUDManager.instance.UpdateTime(levelTimer.currentTimeRemaining);
         HUDManager.instance.UpdateScore(currentScore);
 
@@ -53,6 +61,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadMainLevel()
     {
+        isRunning = true;
         SceneManager.LoadScene(1);
     }
 

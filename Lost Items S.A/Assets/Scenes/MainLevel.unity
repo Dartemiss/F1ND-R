@@ -412,6 +412,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1052472107755567390, guid: 17aa5836e15f00b4082c2fcdf6145b16, type: 3}
+      propertyPath: m_TagString
+      value: TableButton
+      objectReference: {fileID: 0}
     - target: {fileID: 1052472107756636121, guid: 17aa5836e15f00b4082c2fcdf6145b16, type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
@@ -480,6 +484,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1052472108598165734, guid: 17aa5836e15f00b4082c2fcdf6145b16, type: 3}
+      propertyPath: clientController
+      value: 
+      objectReference: {fileID: 812313577}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17aa5836e15f00b4082c2fcdf6145b16, type: 3}
 --- !u!1 &752359342
@@ -660,6 +668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commandPrefab: {fileID: 3754967816762953467, guid: 24f511bfd6ba4704eb2d7781b77564d4, type: 3}
   counterController: {fileID: 1154424160}
+  displayerManager: {fileID: 2722625147509116263}
   numSuccesCommands: 0
 --- !u!4 &812313578
 Transform:
@@ -1194,3 +1203,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
+--- !u!114 &2722625147509116263 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5539939120050195032, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
+  m_PrefabInstance: {fileID: 2722625147509116262}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c77758d10eb834487b09a51969562d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
