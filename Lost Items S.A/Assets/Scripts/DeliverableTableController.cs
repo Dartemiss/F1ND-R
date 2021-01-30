@@ -34,7 +34,7 @@ public class DeliverableTableController : MonoBehaviour
         for(int i = 1; i < gameObject.transform.childCount - 1; ++i)
         {
             counterSlots.Add(gameObject.transform.GetChild(i).transform);
-            slotsGameObjects.Add(gameObject.transform.GetChild(i).transform.GetChild(0).gameObject);
+            //slotsGameObjects.Add(gameObject.transform.GetChild(i).transform.GetChild(0).gameObject);
             objectsTypes.Add(LostObject.LostObjectType.NONE);
         }
     }

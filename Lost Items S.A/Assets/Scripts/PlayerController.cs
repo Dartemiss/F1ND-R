@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        objectSlot = gameObject.transform.GetChild(0).transform;
-        colliderTransform = gameObject.transform.GetChild(1).transform;
+        objectSlot = gameObject.transform.GetChild(1).transform;
+        colliderTransform = gameObject.transform.GetChild(2).transform;
     }
 
     // Update is called once per frame
@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
 
              if(isInteractableObject)
              {
+                 
                  float distance = Vector3.Distance(hitColliders[i].gameObject.transform.position, transform.position);
                  if(distance < maxDistance)
                  {
@@ -68,7 +69,14 @@ public class PlayerController : MonoBehaviour
         {
             if (currentTargetedObject != null)
             {
-                outlineScript = currentTargetedObject.GetComponent<Outline>();
+                if(currentTargetedObject.tag == "CounterSlot")
+                {
+                    outlineScript = currentTargetedObject.transform.GetChild(0).gameObject.GetComponent<Outline>();
+                }
+                else
+                {
+                    outlineScript = currentTargetedObject.GetComponent<Outline>();
+                }
                 if (outlineScript != null)
                 {
                     outlineScript.OutlineWidth = 0f;
@@ -80,7 +88,15 @@ public class PlayerController : MonoBehaviour
         {
             if (currentTargetedObject != null)
             {
-                outlineScript = currentTargetedObject.GetComponent<Outline>();
+                if(currentTargetedObject.tag == "CounterSlot")
+                {
+                    outlineScript = currentTargetedObject.transform.GetChild(0).gameObject.GetComponent<Outline>();
+                }
+                else
+                {
+                    outlineScript = currentTargetedObject.GetComponent<Outline>();
+                }
+
                 if (outlineScript != null)
                 {
                     outlineScript.OutlineWidth = 0f;
@@ -151,8 +167,10 @@ public class PlayerController : MonoBehaviour
 
     public void InteractWithObject()
     {
+
         if(currentTargetedObject != null && currentTargetedObject.tag == "TableButton")
         {
+            Debug.Log("HOLA MI PANA");
             DeliverableTableController.instance.DeliverCommand();
             return;
         }
@@ -166,6 +184,15 @@ public class PlayerController : MonoBehaviour
         {
             PlaceObject();
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
+
+        //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
+        Gizmos.DrawWireCube(colliderTransform.position, colliderTransform.localScale/ 2);
     }
 
  
