@@ -32,14 +32,7 @@ public class TittleScreenManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            NavigateDown();
-        }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            NavigateUp();
-        }
+
     }
 
     public void NavigateDown()
