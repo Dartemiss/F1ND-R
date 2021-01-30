@@ -97,6 +97,6 @@ public class ConveyorBelt : MonoBehaviour
         spawnedGameObject.transform.position = lostObjectSpawnPoint.position;
 
         conveyorBeltOjects.Add(new ConveyorBeltObject(spawnedGameObject, 0));
-        Debug.Log("Hola");
+        //Debug.Log("Hola");
     }
 }
