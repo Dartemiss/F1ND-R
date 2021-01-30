@@ -79,13 +79,24 @@ public class PlayerController : MonoBehaviour
 
     void PickUpObject()
     {
-        if(currentTargetedObject != null && currentTargetedObject.tag == "LostItem")
+        if (currentTargetedObject == null)
+        {
+            return;
+        }
+
+        if (currentTargetedObject.tag == "LostItem")
         {
             currentTargetedObject.transform.parent = gameObject.transform;
             currentTargetedObject.transform.position = objectSlot.position;
             currentLostObject = currentTargetedObject.GetComponent<LostObject>();
             currentLostGameObject = currentTargetedObject;
             carryingObject = true;
+
+            LostObject lostObjectScript = currentTargetedObject.GetComponent<LostObject>();
+            if (lostObjectScript.IsInConveyorBelt())
+            {
+                lostObjectScript.RemoveFromConveyorBelt();
+            }
         }
     }
 

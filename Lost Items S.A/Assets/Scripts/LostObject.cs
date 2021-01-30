@@ -35,6 +35,7 @@ public class LostObject : MonoBehaviour
 
     public void RemoveFromConveyorBelt()
     {
+        conveyorBelt.RemoveConveyorLostObject(transform.gameObject);
         this.conveyorBelt = null;
     }
 

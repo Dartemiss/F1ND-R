@@ -135,6 +135,5 @@ public class ConveyorBelt : MonoBehaviour
         {
             conveyorBeltObjects.RemoveAt(lostObjectIndex);
         }
-        lostObject.GetComponent<LostObject>().RemoveFromConveyorBelt();
     }
 }
