@@ -535,6 +535,8 @@ MonoBehaviour:
   - {fileID: 93532529}
   - {fileID: 1824817449}
   - {fileID: 2049969232}
+  minTimePerSpawn: 2
+  maxTimePerSpawn: 3
 --- !u!4 &752359344
 Transform:
   m_ObjectHideFlags: 0
@@ -682,6 +684,7 @@ MonoBehaviour:
   counterController: {fileID: 1154424160}
   displayerManager: {fileID: 2722625147509116263}
   numSuccesCommands: 0
+  lostDimension: {fileID: 752359343}
 --- !u!4 &812313578
 Transform:
   m_ObjectHideFlags: 0

@@ -9,10 +9,14 @@ public class LostDimension : MonoBehaviour
 
     FlamaTimer lostTimer;
 
+    public float minTimePerSpawn;
+    public float maxTimePerSpawn;
 
     // Start is called before the first frame update
     void Start()
     {
+        minTimePerSpawn = 1f;
+        maxTimePerSpawn = 1.5f;
         lostTimer = GetComponent<FlamaTimer>();
         spawnPointsRandomBag = new Stack<int>();
         SetNextObjectTimer();
@@ -30,11 +34,13 @@ public class LostDimension : MonoBehaviour
 
     void SetNextObjectTimer()
     {
-        lostTimer.StartTimer(Random.Range(2, 3));
+        lostTimer.SetTotalTime(Random.Range(minTimePerSpawn, maxTimePerSpawn));
+        lostTimer.Reset();
     }
 
     void SpawnLostObject()
     {
+        Debug.Log("Spawn");
         int conveyorBeltIndex = GetSpawnPointIndex();
         int lostObjectTypeInt = Random.Range(0, 3);
         SpawnLostObject((LostObject.LostObjectType)lostObjectTypeInt, spawnPoints[conveyorBeltIndex]);

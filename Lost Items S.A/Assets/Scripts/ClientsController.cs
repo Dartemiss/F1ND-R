@@ -20,18 +20,29 @@ public class ClientsController : MonoBehaviour
     public uint numSuccesCommands = 0;
     FlamaTimer nextCommandTimer;
 
+    float timeForNextTask = 10f;
+
+    public LostDimension lostDimension;
+
     // Start is called before the first frame update
     void Start()
     {
        CreateCommand();
 
        nextCommandTimer = transform.gameObject.AddComponent<FlamaTimer>();
-       nextCommandTimer.StartTimer(10f); 
+       nextCommandTimer.StartTimer(timeForNextTask); 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(commands.Count <= 0)
+        {
+            CreateCommand();
+            nextCommandTimer.Reset();
+        }
+
+
         if(nextCommandTimer.HasTimedOut())
         {
             if(commands.Count < maxCommands)
@@ -52,7 +63,7 @@ public class ClientsController : MonoBehaviour
                 displayerManager.EraseCommand(commands[i]);
                 commands[i].DestroyCommand();
                 commands.RemoveAt(i);
-
+                LevelSoundManager.instance.PlayWrongSound();
 
                 break;
             }
@@ -127,19 +138,28 @@ public class ClientsController : MonoBehaviour
 
     void CheckDifficulty()
     {
-        if(numSuccesCommands > 12)
+        if(numSuccesCommands == 12)
         {
             maxNumberOfObjectsPerCommand = 3;
             minNumberOfObjectsPerCommand = 2;
+            timeForNextTask -= 2f;
+            lostDimension.minTimePerSpawn = 0.25f;
+            lostDimension.maxTimePerSpawn = 0.75f;
         }
-        else if(numSuccesCommands > 8)
+        else if(numSuccesCommands == 8)
         {
             maxNumberOfObjectsPerCommand = 3;
+            timeForNextTask -= 1f;
+            lostDimension.minTimePerSpawn = 0.5f;
         }
-        else if(numSuccesCommands > 3)
+        else if(numSuccesCommands == 3)
         {
             maxNumberOfObjectsPerCommand = 2;
+            timeForNextTask -= 1f;
+            lostDimension.maxTimePerSpawn = 1f;
         }
+
+        nextCommandTimer.SetTotalTime(timeForNextTask);
     }
            
 }
