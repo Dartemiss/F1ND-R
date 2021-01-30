@@ -6,6 +6,7 @@ TagManager:
   tags:
   - LostItem
   - CounterSlot
+  - TableButton
   layers:
   - Default
   - TransparentFX

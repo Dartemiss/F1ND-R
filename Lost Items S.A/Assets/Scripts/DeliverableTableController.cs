@@ -7,9 +7,11 @@ public class DeliverableTableController : MonoBehaviour
     public List<LostObject.LostObjectType> objectsTypes = new List<LostObject.LostObjectType>();
 
     List<Transform> counterSlots = new List<Transform>(); 
-    List<bool> availableSlots = new List<bool>(){true, true, true};
-    List<GameObject> counterGameObjects = new List<GameObject>() {null, null, null};
+    public List<bool> availableSlots = new List<bool>(){true, true, true};
+    public List<GameObject> counterGameObjects = new List<GameObject>() {null, null, null};
     public List<GameObject> slotsGameObjects = new List<GameObject>();
+
+    public ClientsController clientController;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,9 @@ public class DeliverableTableController : MonoBehaviour
         {   
             GameObject auxiliarObject = counterGameObjects[i];
             counterGameObjects[i] = null;
+            objectsTypes[i] = LostObject.LostObjectType.NONE;
+            availableSlots[i] = true;
+
             Destroy(auxiliarObject);
         }
     }
@@ -52,32 +57,34 @@ public class DeliverableTableController : MonoBehaviour
             return false;
         }
 
-        Debug.Log("1");
         lostObject.transform.position = counterSlots[indexCounter].position;
         lostObject.transform.parent = transform;
-        Debug.Log("2");
         objectsTypes[indexCounter] = currentLostObject.lostObjectType;
-        Debug.Log("3");
         availableSlots[indexCounter] = false;
-        Debug.Log("4");
         counterGameObjects[indexCounter] = lostObject;
-        Debug.Log("5");
 
         return true;
     }
 
-    public bool PickObject(int indexCounter, ref GameObject lostObject)
+    public void PickObject(GameObject lostObject)
     {
-        if(availableSlots[indexCounter] == true)
+        int indexCounter = 0;
+        foreach(GameObject counterGameObject in counterGameObjects)
         {
-            return false;
+            if(counterGameObject == lostObject)
+            {
+                availableSlots[indexCounter] = true;
+                counterGameObjects[indexCounter] = null;
+                objectsTypes[indexCounter] = LostObject.LostObjectType.NONE;
+                return;
+            }
+            ++indexCounter;
         }
+    }
 
-        availableSlots[indexCounter] = true;
-        lostObject = counterGameObjects[indexCounter];
-        counterGameObjects[indexCounter] = null;
-
-        return true;
+    public void DeliverCommand()
+    {
+        clientController.DeliverCommand();
     }
     
 }

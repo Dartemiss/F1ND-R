@@ -81,11 +81,15 @@ public class PlayerController : MonoBehaviour
     {
         if(currentTargetedObject != null && currentTargetedObject.tag == "LostItem")
         {
+            //Check if object is in Counter
+            deliverableTable.PickObject(currentTargetedObject);
+
             currentTargetedObject.transform.parent = gameObject.transform;
             currentTargetedObject.transform.position = objectSlot.position;
             currentLostObject = currentTargetedObject.GetComponent<LostObject>();
             currentLostGameObject = currentTargetedObject;
             carryingObject = true;
+            
         }
     }
 
@@ -121,9 +125,10 @@ public class PlayerController : MonoBehaviour
 
     void InteractWithObject()
     {
-        if(currentTargetedObject.tag == "")
+        if(currentTargetedObject != null && currentTargetedObject.tag == "TableButton")
         {
-            
+            deliverableTable.DeliverCommand();
+            return;
         }
 
 

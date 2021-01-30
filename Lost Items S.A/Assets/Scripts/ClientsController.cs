@@ -57,14 +57,9 @@ public class ClientsController : MonoBehaviour
                 break;
             }
         }
-
-        // if(Keyboard.current.pKey.wasPressedThisFrame)
-        // {
-        //     DeliverCommand();
-        // }
     }
 
-    void DeliverCommand()
+    public void DeliverCommand()
     {
         bool succes = false;
         int commandScore = 0;
