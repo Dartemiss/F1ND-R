@@ -14,8 +14,11 @@ public class PlayerConfigurationManager : MonoBehaviour
 
     [SerializeField]
     private int maxPlayers = 3;
+    private int currentPlayers = 0;
 
     public static PlayerConfigurationManager Instance { get; private set; }
+
+    private PlayerInputManager playerInputManager;
 
     private void Awake()
     {
@@ -28,6 +31,7 @@ public class PlayerConfigurationManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(Instance);
             playerConfigs = new List<PlayerConfiguration>();
+            playerInputManager = GetComponent<PlayerInputManager>();
         }
     }
 
@@ -47,13 +51,14 @@ public class PlayerConfigurationManager : MonoBehaviour
 
     public void HandlePlayerJoin(PlayerInput pi)
     {
-        // if (currentPlayers > maxPlayers) { return; }
-
+         if (currentPlayers > maxPlayers || !isStarted) { return; }
+       
         Debug.Log("Player Joined " + pi.playerIndex);
         if (!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex))
         {
             pi.transform.SetParent(transform);
             playerConfigs.Add(new PlayerConfiguration(pi));
+            ++currentPlayers;
         }
     }
 
@@ -65,6 +70,7 @@ public class PlayerConfigurationManager : MonoBehaviour
     public void StartPlayerConfiguration()
     {
         isStarted = true;
+        playerInputManager.EnableJoining();
     }
 }
 
