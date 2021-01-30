@@ -13,8 +13,8 @@ public class ClientsController : MonoBehaviour
     public DeliverableTableController counterController;
     public CommandsDisplayManager displayerManager;
 
-    uint minNumberOfObjectsPerCommand = 1;
-    uint maxNumberOfObjectsPerCommand = 1;
+    uint minNumberOfObjectsPerCommand = 3;
+    uint maxNumberOfObjectsPerCommand = 3;
 
     uint maxCommands = 5;
     public uint numSuccesCommands = 0;

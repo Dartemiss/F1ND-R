@@ -21,14 +21,17 @@ public class CommandsDisplayManager : MonoBehaviour
 
     public void ShowCommand(CommandController command)
     {
-        Sprite lostObjectSprite = lostObjectSprites[(int)command.commandItems[0]];
         int i = GetAvailableCommandDisplay();
         if (i == -1)
         {
             Debug.Log("No command display available");
             return;
         }
-        commandDisplayManagers[i].Show(lostObjectSprite, command);
+
+        Sprite lostObject1Sprite = lostObjectSprites[(int)command.commandItems[0]];
+        Sprite lostObject2Sprite = lostObjectSprites[(int)command.commandItems[1]];
+        Sprite lostObject3Sprite = lostObjectSprites[(int)command.commandItems[2]];
+        commandDisplayManagers[i].Show(lostObject1Sprite, lostObject2Sprite, lostObject3Sprite, command);
 
     }
 
