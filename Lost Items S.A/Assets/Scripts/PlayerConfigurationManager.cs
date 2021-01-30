@@ -51,7 +51,7 @@ public class PlayerConfigurationManager : MonoBehaviour
 
     public void HandlePlayerJoin(PlayerInput pi)
     {
-         if (currentPlayers > maxPlayers || !isStarted) { return; }
+        if (currentPlayers > maxPlayers || !isStarted) { return; }
        
         Debug.Log("Player Joined " + pi.playerIndex);
         if (!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex))
@@ -60,6 +60,12 @@ public class PlayerConfigurationManager : MonoBehaviour
             playerConfigs.Add(new PlayerConfiguration(pi));
             ++currentPlayers;
         }
+    }
+
+    public void AllReadyStartGame()
+    {
+        maxPlayers = currentPlayers;
+        SceneManager.LoadScene("MainLevel");
     }
 
     public List<PlayerConfiguration> GetPlayerConfigurations()
@@ -71,6 +77,13 @@ public class PlayerConfigurationManager : MonoBehaviour
     {
         isStarted = true;
         playerInputManager.EnableJoining();
+    }
+
+    public void StopPlayerConfiguration()
+    {
+        isStarted = true;
+        playerInputManager.DisableJoining();
+        playerConfigs.Clear();
     }
 }
 

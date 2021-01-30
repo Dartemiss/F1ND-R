@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerSelectionManager : MonoBehaviour
 {
@@ -21,7 +22,10 @@ public class PlayerSelectionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Keyboard.current.escapeKey.wasPressedThisFrame || Gamepad.current.bButton.wasPressedThisFrame)
+        {
+            Close();
+        }
     }
 
     public void CancelPlayerSelection()
@@ -37,6 +41,8 @@ public class PlayerSelectionManager : MonoBehaviour
     public void Close()
     {
         transform.gameObject.SetActive(false);
+        PlayerConfigurationManager.Instance.StopPlayerConfiguration();
+        canvas.SetActive(true);
     }
 
     public void Open()

@@ -840,7 +840,7 @@ MonoBehaviour:
   m_PointAction: {fileID: 0}
   m_MoveAction: {fileID: -5440059420408684335, guid: e6380300bf6b57643a1f36be1cf95d3a, type: 3}
   m_SubmitAction: {fileID: 2748627644948276148, guid: e6380300bf6b57643a1f36be1cf95d3a, type: 3}
-  m_CancelAction: {fileID: 0}
+  m_CancelAction: {fileID: -3229733185776279182, guid: e6380300bf6b57643a1f36be1cf95d3a, type: 3}
   m_LeftClickAction: {fileID: 0}
   m_MiddleClickAction: {fileID: 0}
   m_RightClickAction: {fileID: 0}
