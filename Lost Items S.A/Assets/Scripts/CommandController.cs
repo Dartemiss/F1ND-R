@@ -35,14 +35,24 @@ public class CommandController : MonoBehaviour
 
     public bool CheckDeliver(List<LostObject.LostObjectType> deliveredItems)
     {
-        if(deliveredItems.Count != commandItems.Count)
+
+        int numObjects = 0;
+        foreach(LostObject.LostObjectType item in deliveredItems)
+        {
+            if(item != LostObject.LostObjectType.NONE)
+            {
+                ++numObjects;
+            }
+        }
+
+        if(numObjects != commandItems.Count)
         {
             return false;
         }
 
         deliveredItems.Sort();
 
-        for(int i = 0; i < deliveredItems.Count; ++i)
+        for(int i = 0; i < numObjects; ++i)
         {
             if(deliveredItems[i] != commandItems[i])
             {
