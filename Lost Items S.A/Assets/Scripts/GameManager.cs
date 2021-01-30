@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        HUDManager.instance.UpdateTime(levelTimer.currentTimeRemaining);
+        HUDManager.instance.UpdateScore(currentScore);
+
         if(levelTimer.HasTimedOut())
         {
             //Lose
