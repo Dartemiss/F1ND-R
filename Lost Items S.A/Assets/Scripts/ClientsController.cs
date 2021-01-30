@@ -58,10 +58,10 @@ public class ClientsController : MonoBehaviour
             }
         }
 
-        if(Keyboard.current.pKey.wasPressedThisFrame)
-        {
-            DeliverCommand();
-        }
+        // if(Keyboard.current.pKey.wasPressedThisFrame)
+        // {
+        //     DeliverCommand();
+        // }
     }
 
     void DeliverCommand()

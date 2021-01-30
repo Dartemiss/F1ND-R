@@ -8,7 +8,8 @@ public class LostObject : MonoBehaviour
     {
         FOO_1,
         FOO_2,
-        FOO_3
+        FOO_3,
+        NONE
     }
 
     public LostObjectType lostObjectType;

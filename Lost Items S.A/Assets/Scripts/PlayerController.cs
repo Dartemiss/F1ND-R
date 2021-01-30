@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,8 +15,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask m_LayerMask;
 
     public GameObject currentTargetedObject = null;
+    public DeliverableTableController deliverableTable;
 
-    public bool triggerAction = false;
     private bool carryingObject = false;
 
     // Start is called before the first frame update
@@ -29,11 +30,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         CheckObjectsInFront();
-        if(triggerAction)
+        if(Keyboard.current.pKey.wasPressedThisFrame)
         {
-            Debug.Log("Picking up object.");
-            PickUpObject();
-            PlaceObject();
+            Debug.Log("Interact with object.");
+            InteractWithObject();   
         }
     }
 
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
          {
              bool condition = (!carryingObject) ? hitColliders[i].gameObject.tag == "LostItem" : hitColliders[i].gameObject.tag == "CounterSlot";
 
-             if(condition)
+             if(condition || hitColliders[i].gameObject.tag == "TableButton")
              {
                  float distance = Vector3.Distance(hitColliders[i].gameObject.transform.position, transform.position);
                  if(distance < maxDistance)
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
     void PickUpObject()
     {
-        if(currentTargetedObject != null && !carryingObject && currentTargetedObject.tag == "LostItem")
+        if(currentTargetedObject != null && currentTargetedObject.tag == "LostItem")
         {
             currentTargetedObject.transform.parent = gameObject.transform;
             currentTargetedObject.transform.position = objectSlot.position;
@@ -91,14 +91,51 @@ public class PlayerController : MonoBehaviour
 
     void PlaceObject()
     {
-        if(currentTargetedObject != null && currentLostGameObject != null && carryingObject && currentTargetedObject.tag == "CounterSlot")
+        if(currentLostGameObject != null)
         {
-            currentLostGameObject.transform.parent = currentTargetedObject.transform;
-            currentLostGameObject.transform.position = currentTargetedObject.transform.position;
+            //Place it on DeliverableTable
+            if(currentTargetedObject != null && currentTargetedObject.tag == "CounterSlot")
+            {
+                //currentLostGameObject.transform.parent = currentTargetedObject.transform;
+                //currentLostGameObject.transform.position = currentTargetedObject.transform.position;
+                if(!deliverableTable.PutObject(currentLostGameObject, currentTargetedObject, currentLostObject))
+                {
+                    Debug.Log("Cannot place object here.");
+                }
+            }
+            //Place it on the ground
+            else
+            {
+                currentLostGameObject.transform.parent = null;
+                Vector3 newPosition = currentLostGameObject.transform.position;
+                newPosition.y = 0.92f;
+                currentLostGameObject.transform.position = newPosition;
+            }
+
+
             currentLostObject = null;
             currentLostGameObject = null;
             carryingObject = false;
         }
     }
+
+    void InteractWithObject()
+    {
+        if(currentTargetedObject.tag == "")
+        {
+            
+        }
+
+
+        if(!carryingObject)
+        {
+            PickUpObject();
+        }
+        else
+        {
+            PlaceObject();
+        }
+    }
+
  
 }
