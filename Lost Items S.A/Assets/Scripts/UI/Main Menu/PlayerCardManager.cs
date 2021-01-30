@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PlayerCardManager : MonoBehaviour
 {
@@ -11,18 +12,33 @@ public class PlayerCardManager : MonoBehaviour
     public Sprite keyboardSprite;
     public Sprite controllerSprite;
 
-    bool activated = false;
+    public List<Sprite> finderSprites;
+    public Image finderIDSprite;
+
+    public enum PlayerColor
+    {
+        RED,
+        BLUE,
+        YELLOW,
+        PURPLE,
+    }
+
+    bool assigned = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public bool IsAssigned()
+    {
+        return assigned;
     }
 
     public void Activate(PlayerSelectionManager.InputType inputType)
@@ -40,6 +56,13 @@ public class PlayerCardManager : MonoBehaviour
 
         selectedInput.enabled = true;
         requestInputText.enabled = false;
-        activated = true;
+        assigned = true;
+        SetFinderIDSprite();
+
+    }
+
+    void SetFinderIDSprite()
+    {
+        finderIDSprite.sprite = finderSprites[(int)MainMenuManager.instance.GetNextAvailableColor()];
     }
 }
