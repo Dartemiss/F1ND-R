@@ -61,15 +61,15 @@ public class ClientsController : MonoBehaviour
 
     public void DeliverCommand()
     {
-        bool succes = false;
+        bool success = false;
         int commandScore = 0;
 
         for(int i = 0; i < commands.Count; ++i)
         {
             if(commands[i].CheckDeliver(counterController.objectsTypes))
             {
-                //Succes
-                succes = true;
+                //Success
+                success = true;
                 commandScore = commands[i].commandScore;
 
                 displayerManager.EraseCommand(commands[i]);
@@ -79,11 +79,12 @@ public class ClientsController : MonoBehaviour
             }
         }
 
-        if(succes)
+        if(success)
         {
             //Earn points
             GameManager.instance.AddScore(commandScore);
             numSuccesCommands++;
+            LevelSoundManager.instance.PlayCorrectSound();
             Debug.Log("Earning points");
             CheckDifficulty();
         }
@@ -91,7 +92,8 @@ public class ClientsController : MonoBehaviour
         {
             //Lose points
             GameManager.instance.SubstractScore(50);
-             Debug.Log("Losing points");
+            LevelSoundManager.instance.PlayWrongSound();
+            Debug.Log("Losing points");
         }
 
         counterController.ClearTable();
