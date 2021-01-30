@@ -7,9 +7,9 @@ public class ClientsController : MonoBehaviour
 {
     const uint maxTypeOfObjects = 3;
     List<CommandController> commands = new List<CommandController>();
-    List<LostObject.LostObjectType> safataBro = new List<LostObject.LostObjectType>();
 
     public GameObject commandPrefab;
+    public DeliverableTableController counterController;
 
     uint minNumberOfObjectsPerCommand = 1;
     uint maxNumberOfObjectsPerCommand = 1;
@@ -56,6 +56,11 @@ public class ClientsController : MonoBehaviour
                 break;
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            DeliverCommand();
+        }
     }
 
     void DeliverCommand()
@@ -65,7 +70,7 @@ public class ClientsController : MonoBehaviour
 
         for(int i = 0; i < commands.Count; ++i)
         {
-            if(commands[i].CheckDeliver(safataBro))
+            if(commands[i].CheckDeliver(counterController.objectsTypes))
             {
                 //Succes
                 succes = true;
@@ -81,6 +86,7 @@ public class ClientsController : MonoBehaviour
         {
             //Earn points
             GameManager.instance.AddScore(commandScore);
+
             numSuccesCommands++;
 
             CheckDifficulty();
@@ -90,6 +96,9 @@ public class ClientsController : MonoBehaviour
             //Lose points
             GameManager.instance.SubstractScore(50);
         }
+
+        counterController.ClearTable();
+        Debug.Log("Clearing table.");
     }
 
     void CreateCommand()
