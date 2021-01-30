@@ -9,6 +9,7 @@ public class PlayerInputHandler : MonoBehaviour
 {
     private PlayerConfiguration playerConfig;
     private PlayerMovement playerMovement;
+    private PlayerController playerController;
 
     [SerializeField]
     private MeshRenderer playerMesh;
@@ -19,6 +20,7 @@ public class PlayerInputHandler : MonoBehaviour
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        playerController = GetComponent<PlayerController>();
         controls = new PlayerControls();
 
     }
@@ -37,6 +39,11 @@ public class PlayerInputHandler : MonoBehaviour
             OnMove(obj);
         }
 
+        if(obj.action.name == controls.Gameplay.Interact.name && obj.performed)
+        {
+            OnInteract();
+        }
+
     }
 
     public void OnMove(CallbackContext ctx)
@@ -44,6 +51,14 @@ public class PlayerInputHandler : MonoBehaviour
         if (playerMovement != null)
         {
             playerMovement.MovementDirection(ctx.ReadValue<Vector2>());
+        }
+    }
+
+    public void OnInteract()
+    {
+        if (playerController != null)
+        {
+            playerController.InteractWithObject();
         }
     }
 }

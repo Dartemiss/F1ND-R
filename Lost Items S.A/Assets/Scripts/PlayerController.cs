@@ -29,10 +29,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         CheckObjectsInFront();
-        if(Keyboard.current.pKey.wasPressedThisFrame)
-        {
-            InteractWithObject();   
-        }
     }
 
     void CheckObjectsInFront()
@@ -150,7 +146,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void InteractWithObject()
+    public void InteractWithObject()
     {
         if(currentTargetedObject != null && currentTargetedObject.tag == "TableButton")
         {
