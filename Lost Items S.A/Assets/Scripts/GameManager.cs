@@ -44,8 +44,9 @@ public class GameManager : MonoBehaviour
 
         if(levelTimer.HasTimedOut())
         {
-            //Lose
-            Debug.Log("You lost little useless noob.");
+            //End game
+            isRunning = false;
+            SceneManager.LoadScene(0);
         }
     }
 
