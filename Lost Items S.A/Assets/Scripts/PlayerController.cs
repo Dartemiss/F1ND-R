@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 currentLostGameObject.transform.parent = null;
-                currentTargetedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                currentLostGameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 /*
                 Vector3 newPosition = currentLostGameObject.transform.position;
                 newPosition.y = 0.92f;
