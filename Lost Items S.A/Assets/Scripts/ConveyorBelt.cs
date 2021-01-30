@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ConveyorBelt : MonoBehaviour
 {
@@ -55,7 +56,7 @@ public class ConveyorBelt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Keyboard.current.tKey.wasPressedThisFrame)
         {
             SpawnLostObject(LostObject.LostObjectType.FOO_1);
         }

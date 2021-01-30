@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 public class ClientsController : MonoBehaviour
@@ -57,7 +58,7 @@ public class ClientsController : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Keyboard.current.pKey.wasPressedThisFrame)
         {
             DeliverCommand();
         }

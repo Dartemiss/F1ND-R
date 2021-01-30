@@ -53,7 +53,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5791840795888065474, guid: e2f2bc47f8026c4488b41b15830a8f7b, type: 3}
       propertyPath: m_Name
-      value: LostObject
+      value: LostObjectType1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5791840795888065474, guid: e2f2bc47f8026c4488b41b15830a8f7b, type: 3}
+      propertyPath: m_TagString
+      value: LostItem
       objectReference: {fileID: 0}
     - target: {fileID: 6224922897311096209, guid: e2f2bc47f8026c4488b41b15830a8f7b, type: 3}
       propertyPath: m_Materials.Array.data[0]

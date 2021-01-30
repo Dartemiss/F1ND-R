@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2000429563365246030}
   - component: {fileID: 598207187863765808}
   m_Layer: 0
-  m_Name: LostObject 2
-  m_TagString: Untagged
+  m_Name: LostObjectType3
+  m_TagString: LostItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
