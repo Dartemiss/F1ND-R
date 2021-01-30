@@ -105,10 +105,9 @@ public class PlayerController : MonoBehaviour
             currentTargetedObject.transform.parent = gameObject.transform;
             currentTargetedObject.transform.position = objectSlot.position;
             currentLostObject = currentTargetedObject.GetComponent<LostObject>();
+            currentTargetedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             currentLostGameObject = currentTargetedObject;
             carryingObject = true;
-
-            LostObject lostObjectScript = currentTargetedObject.GetComponent<LostObject>();
         }
     }
 
@@ -130,9 +129,12 @@ public class PlayerController : MonoBehaviour
             else
             {
                 currentLostGameObject.transform.parent = null;
+                currentTargetedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                /*
                 Vector3 newPosition = currentLostGameObject.transform.position;
                 newPosition.y = 0.92f;
                 currentLostGameObject.transform.position = newPosition;
+                */
             }
 
 
