@@ -104,6 +104,8 @@ public class PlayerController : MonoBehaviour
 
         if (currentTargetedObject.tag == "LostItem")
         {
+            LevelSoundManager.instance.PlayPickupSound();
+
             //Check if object is in Counter
             DeliverableTableController.instance.PickObject(currentTargetedObject);
 
@@ -120,8 +122,10 @@ public class PlayerController : MonoBehaviour
     {
         if(currentLostGameObject != null)
         {
+            LevelSoundManager.instance.PlayDropSound();
+
             //Place it on DeliverableTable
-            if(currentTargetedObject != null && currentTargetedObject.tag == "CounterSlot")
+            if (currentTargetedObject != null && currentTargetedObject.tag == "CounterSlot")
             {
                 if(!DeliverableTableController.instance.PutObject(currentLostGameObject, currentTargetedObject, currentLostObject))
                 {
