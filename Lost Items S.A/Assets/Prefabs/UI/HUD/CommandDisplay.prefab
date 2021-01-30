@@ -135,9 +135,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948151df7506fce4eb036240e9b6c7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lostObject1Image: {fileID: 4222270666131285684}
-  lostObject2Image: {fileID: 3249389953890251257}
-  lostObject3Image: {fileID: 3484919119805496077}
+  lostObjectsImages:
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
   commandController: {fileID: 0}
 --- !u!1 &6333608503187611781
 GameObject:

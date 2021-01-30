@@ -5,10 +5,8 @@ using UnityEngine.UI;
 
 public class CommandDisplayManager : MonoBehaviour
 {
-    public Image lostObject1Image;
-    public Image lostObject2Image;
-    public Image lostObject3Image;
 
+    public List<Image> lostObjectsImages;
     bool available = true;
 
     public CommandController commandController;
@@ -25,16 +23,15 @@ public class CommandDisplayManager : MonoBehaviour
         
     }
 
-    public void Show(Sprite lostObject1Sprite, Sprite lostObject2Sprite, Sprite lostObject3Sprite, CommandController command)
+    public void Show(List<Sprite> lostObjectsSprites, CommandController command)
     {
-
-        lostObject1Image.enabled = true;
-        lostObject2Image.enabled = true;
-        lostObject3Image.enabled = true;
-
-        lostObject1Image.sprite = lostObject1Sprite;
-        lostObject2Image.sprite = lostObject2Sprite;
-        lostObject3Image.sprite = lostObject3Sprite;
+        int i = 0;
+        foreach(Sprite sprite in lostObjectsSprites)
+        {
+            lostObjectsImages[i].enabled = true;
+            lostObjectsImages[i].sprite = sprite;
+            ++i;
+        }
 
         available = false;
         commandController = command;
@@ -42,9 +39,10 @@ public class CommandDisplayManager : MonoBehaviour
 
     public void Hide()
     {
-        lostObject1Image.enabled = false;
-        lostObject2Image.enabled = false;
-        lostObject3Image.enabled = false;
+        foreach(Image image in lostObjectsImages)
+        {
+            image.enabled = false;
+        }
 
         available = true;
         commandController = null;

@@ -28,10 +28,12 @@ public class CommandsDisplayManager : MonoBehaviour
             return;
         }
 
-        Sprite lostObject1Sprite = lostObjectSprites[(int)command.commandItems[0]];
-        Sprite lostObject2Sprite = lostObjectSprites[(int)command.commandItems[1]];
-        Sprite lostObject3Sprite = lostObjectSprites[(int)command.commandItems[2]];
-        commandDisplayManagers[i].Show(lostObject1Sprite, lostObject2Sprite, lostObject3Sprite, command);
+        List<Sprite> sprites = new List<Sprite>();
+        for(int j = 0; j < command.commandItems.Count; ++j)
+        {
+            sprites.Add(lostObjectSprites[(int)command.commandItems[j]]);
+        }
+        commandDisplayManagers[i].Show(sprites, command);
 
     }
 
