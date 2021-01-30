@@ -11,6 +11,7 @@ public class ClientsController : MonoBehaviour
 
     public GameObject commandPrefab;
     public DeliverableTableController counterController;
+    public CommandsDisplayManager displayerManager;
 
     uint minNumberOfObjectsPerCommand = 1;
     uint maxNumberOfObjectsPerCommand = 1;
@@ -35,7 +36,6 @@ public class ClientsController : MonoBehaviour
         {
             if(commands.Count < maxCommands)
             {
-                Debug.Log("Create Command!");
                 CreateCommand();
             }
             nextCommandTimer.Reset();
@@ -48,23 +48,18 @@ public class ClientsController : MonoBehaviour
             if(timeOut)
             {
                 //Lose points
-                Debug.Log("TimeOut, you lose 50 points.");
                 GameManager.instance.SubstractScore(50);
+                displayerManager.EraseCommand(commands[i]);
                 commands[i].DestroyCommand();
                 commands.RemoveAt(i);
 
-                numSuccesCommands++;
+
                 break;
             }
         }
-
-        // if(Keyboard.current.pKey.wasPressedThisFrame)
-        // {
-        //     DeliverCommand();
-        // }
     }
 
-    void DeliverCommand()
+    public void DeliverCommand()
     {
         bool succes = false;
         int commandScore = 0;
@@ -77,6 +72,7 @@ public class ClientsController : MonoBehaviour
                 succes = true;
                 commandScore = commands[i].commandScore;
 
+                displayerManager.EraseCommand(commands[i]);
                 commands[i].DestroyCommand();
                 commands.RemoveAt(i);
                 break;
@@ -87,19 +83,18 @@ public class ClientsController : MonoBehaviour
         {
             //Earn points
             GameManager.instance.AddScore(commandScore);
-
             numSuccesCommands++;
-
+            Debug.Log("Earning points");
             CheckDifficulty();
         }
         else
         {
             //Lose points
             GameManager.instance.SubstractScore(50);
+             Debug.Log("Losing points");
         }
 
         counterController.ClearTable();
-        Debug.Log("Clearing table.");
     }
 
     void CreateCommand()
@@ -121,7 +116,7 @@ public class ClientsController : MonoBehaviour
         command.StartCommand(45f + diff, commandItems);
 
         commands.Add(command);
-
+        displayerManager.ShowCommand(command);
     }
 
     void CreateObject(ref List<LostObject.LostObjectType> commandItems)

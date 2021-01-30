@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LostDimension : MonoBehaviour
 {
-    public List<ConveyorBelt> conveyorBelts;
-    public Stack<int> conveyorBeltRandomBag;
+    public List<Transform> spawnPoints;
+    public Stack<int> spawnPointsRandomBag;
 
     FlamaTimer lostTimer;
 
@@ -14,7 +14,7 @@ public class LostDimension : MonoBehaviour
     void Start()
     {
         lostTimer = GetComponent<FlamaTimer>();
-        conveyorBeltRandomBag = new Stack<int>();
+        spawnPointsRandomBag = new Stack<int>();
         SetNextObjectTimer();
     }
 
@@ -35,36 +35,43 @@ public class LostDimension : MonoBehaviour
 
     void SpawnLostObject()
     {
-        int conveyorBeltIndex = GetConveyorBeltIndex();
+        int conveyorBeltIndex = GetSpawnPointIndex();
         int lostObjectTypeInt = Random.Range(0, 3);
-        conveyorBelts[conveyorBeltIndex].SpawnLostObject((LostObject.LostObjectType)lostObjectTypeInt);
+        SpawnLostObject((LostObject.LostObjectType)lostObjectTypeInt, spawnPoints[conveyorBeltIndex]);
     }
 
-    int GetConveyorBeltIndex()
+    int GetSpawnPointIndex()
     {
-        if (conveyorBeltRandomBag.Count == 0)
+        if (spawnPointsRandomBag.Count == 0)
         {
             FillRandomBag();
         }
-        return conveyorBeltRandomBag.Pop();
+        return spawnPointsRandomBag.Pop();
     }
 
     void FillRandomBag()
     {
-        List<int> conveyorBeltRandomArray = new List<int>();
-        for (int i = 0; i < conveyorBelts.Count; ++i)
+        List<int> spawnPointRandomArray = new List<int>();
+        for (int i = 0; i < spawnPoints.Count; ++i)
         {
-            conveyorBeltRandomArray.Add(i);
+            spawnPointRandomArray.Add(i);
         }
 
-        for (int i = conveyorBeltRandomArray.Count - 1; i > 0; i--)
+        for (int i = spawnPointRandomArray.Count - 1; i > 0; i--)
         {
             int swapIndex = Random.Range(0, i + 1);
-            int tmp = conveyorBeltRandomArray[i];
-            conveyorBeltRandomArray[i] = conveyorBeltRandomArray[swapIndex];
-            conveyorBeltRandomArray[swapIndex] = tmp;
+            int tmp = spawnPointRandomArray[i];
+            spawnPointRandomArray[i] = spawnPointRandomArray[swapIndex];
+            spawnPointRandomArray[swapIndex] = tmp;
         }
 
-        conveyorBeltRandomBag = new Stack<int>(conveyorBeltRandomArray);
+        spawnPointsRandomBag = new Stack<int>(spawnPointRandomArray);
     }
+
+    void SpawnLostObject(LostObject.LostObjectType lostObjectType, Transform spawnPosition)
+    {
+        GameObject spawnedGameObject = LostObjectFactory.instance.CreateLostObject(lostObjectType);
+        spawnedGameObject.transform.position = spawnPosition.position;
+    }
+
 }

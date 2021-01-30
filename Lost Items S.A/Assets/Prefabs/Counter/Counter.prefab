@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 1052472107755567458}
   - component: {fileID: 1052472107755567457}
   - component: {fileID: 1052472107755567456}
+  - component: {fileID: 6879311317987396495}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -158,6 +159,24 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &6879311317987396495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052472107755567390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0.989607, b: 0, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1052472107756636121
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +284,7 @@ GameObject:
   - component: {fileID: 1052472107921526293}
   - component: {fileID: 1052472107921526292}
   - component: {fileID: 1052472107921526291}
+  - component: {fileID: 4739783964844494690}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -348,6 +368,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4739783964844494690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052472107921526289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0.989607, b: 0, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1052472108085203905
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,6 +398,7 @@ GameObject:
   - component: {fileID: 1052472108085203909}
   - component: {fileID: 1052472108085203908}
   - component: {fileID: 1052472108085203907}
+  - component: {fileID: 6483464800820184727}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -443,6 +482,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6483464800820184727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052472108085203905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0.989607, b: 0, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1052472108126111270
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +543,7 @@ GameObject:
   - component: {fileID: 1052472108133124611}
   - component: {fileID: 1052472108133124610}
   - component: {fileID: 1052472108133124609}
+  - component: {fileID: 8372102800926244303}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -569,6 +627,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8372102800926244303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052472108133124671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0.989607, b: 0, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1052472108179129287
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,3 +725,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsTypes: 
+  availableSlots: 010101
+  counterGameObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  slotsGameObjects: []
+  clientController: {fileID: 0}

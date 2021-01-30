@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     public LayerMask m_LayerMask;
 
     public GameObject currentTargetedObject = null;
-    public DeliverableTableController deliverableTable;
 
     private bool carryingObject = false;
 
@@ -32,7 +31,6 @@ public class PlayerController : MonoBehaviour
         CheckObjectsInFront();
         if(Keyboard.current.pKey.wasPressedThisFrame)
         {
-            Debug.Log("Interact with object.");
             InteractWithObject();   
         }
     }
@@ -46,31 +44,29 @@ public class PlayerController : MonoBehaviour
             Quaternion.identity,
             m_LayerMask
         );
-
-         int i = 0;
+        
          int closerIndex = 0;
          float maxDistance = 10000f;
-         bool found = false;
-         while(i < hitColliders.Length)
+         for (int i = 0; i < hitColliders.Length; ++i)
          {
-             bool condition = (!carryingObject) ? hitColliders[i].gameObject.tag == "LostItem" : hitColliders[i].gameObject.tag == "CounterSlot";
+            bool isInteractableObject = false;
+            isInteractableObject |= !carryingObject && hitColliders[i].gameObject.tag == "LostItem";
+            isInteractableObject |= carryingObject && hitColliders[i].gameObject.tag == "CounterSlot";
+            isInteractableObject |= hitColliders[i].gameObject.tag == "TableButton";
 
-             if(condition || hitColliders[i].gameObject.tag == "TableButton")
+             if(isInteractableObject)
              {
                  float distance = Vector3.Distance(hitColliders[i].gameObject.transform.position, transform.position);
                  if(distance < maxDistance)
                  {
                     maxDistance = distance;
                     closerIndex = i;
-                    found = true;
                  }
              }
-
-             ++i;
          }
 
         Outline outlineScript;
-        if (hitColliders.Length == 0 || !found)
+        if (hitColliders.Length == 0)
         {
             if (currentTargetedObject != null)
             {
@@ -81,16 +77,26 @@ public class PlayerController : MonoBehaviour
                 }
             }
             currentTargetedObject = null;
-            return;
         }
-
-        currentTargetedObject = hitColliders[closerIndex].gameObject;
-
-        outlineScript = currentTargetedObject.GetComponent<Outline>();
-        if (outlineScript != null)
+        else
         {
-            outlineScript.OutlineWidth = 2f;
+            if (currentTargetedObject != null)
+            {
+                outlineScript = currentTargetedObject.GetComponent<Outline>();
+                if (outlineScript != null)
+                {
+                    outlineScript.OutlineWidth = 0f;
+                }
+            }
+            currentTargetedObject = hitColliders[closerIndex].gameObject;
+
+            outlineScript = currentTargetedObject.GetComponent<Outline>();
+            if (outlineScript != null)
+            {
+                outlineScript.OutlineWidth = 2f;
+            }
         }
+        
     }
 
     void PickUpObject()
@@ -102,17 +108,15 @@ public class PlayerController : MonoBehaviour
 
         if (currentTargetedObject.tag == "LostItem")
         {
+            //Check if object is in Counter
+            DeliverableTableController.instance.PickObject(currentTargetedObject);
+
             currentTargetedObject.transform.parent = gameObject.transform;
             currentTargetedObject.transform.position = objectSlot.position;
             currentLostObject = currentTargetedObject.GetComponent<LostObject>();
+            currentTargetedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             currentLostGameObject = currentTargetedObject;
             carryingObject = true;
-
-            LostObject lostObjectScript = currentTargetedObject.GetComponent<LostObject>();
-            if (lostObjectScript.IsInConveyorBelt())
-            {
-                lostObjectScript.RemoveFromConveyorBelt();
-            }
         }
     }
 
@@ -123,9 +127,7 @@ public class PlayerController : MonoBehaviour
             //Place it on DeliverableTable
             if(currentTargetedObject != null && currentTargetedObject.tag == "CounterSlot")
             {
-                //currentLostGameObject.transform.parent = currentTargetedObject.transform;
-                //currentLostGameObject.transform.position = currentTargetedObject.transform.position;
-                if(!deliverableTable.PutObject(currentLostGameObject, currentTargetedObject, currentLostObject))
+                if(!DeliverableTableController.instance.PutObject(currentLostGameObject, currentTargetedObject, currentLostObject))
                 {
                     Debug.Log("Cannot place object here.");
                 }
@@ -134,9 +136,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 currentLostGameObject.transform.parent = null;
-                Vector3 newPosition = currentLostGameObject.transform.position;
-                newPosition.y = 0.92f;
-                currentLostGameObject.transform.position = newPosition;
+                currentLostGameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             }
 
 
@@ -148,9 +148,10 @@ public class PlayerController : MonoBehaviour
 
     void InteractWithObject()
     {
-        if(currentTargetedObject.tag == "")
+        if(currentTargetedObject != null && currentTargetedObject.tag == "TableButton")
         {
-            
+            DeliverableTableController.instance.DeliverCommand();
+            return;
         }
 
 

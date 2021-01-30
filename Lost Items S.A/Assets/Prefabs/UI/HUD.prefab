@@ -272,8 +272,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lostObjectSprites:
   - {fileID: 21300000, guid: a44c563dd96c70549bb2fb957ceff883, type: 3}
-  - {fileID: 21300000, guid: 01c77ec957a0dc841b24496b0e8008cc, type: 3}
   - {fileID: 21300000, guid: 2a5737f8f95286a4e8b9e39b602c7147, type: 3}
+  - {fileID: 21300000, guid: 01c77ec957a0dc841b24496b0e8008cc, type: 3}
   commandDisplayManagers:
   - {fileID: 1286828203038522237}
   - {fileID: 8593758098587210122}
