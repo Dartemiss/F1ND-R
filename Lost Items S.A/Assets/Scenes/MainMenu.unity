@@ -617,6 +617,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &931530967 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2720977352010237520, guid: c6289f09e11bed649b0724826d77d80d, type: 3}
+  m_PrefabInstance: {fileID: 2720977351100745065}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1122595048
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,8 +867,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1197296363}
-  startButton: {fileID: 348613034}
-  exitButton: {fileID: 1773359671}
+  startButton: {fileID: 2720977351100745066}
+  exitButton: {fileID: 931530967}
 --- !u!223 &1495716626
 Canvas:
   m_ObjectHideFlags: 0
