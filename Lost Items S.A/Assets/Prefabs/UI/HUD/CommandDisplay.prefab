@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 2a5737f8f95286a4e8b9e39b602c7147, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -135,7 +135,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948151df7506fce4eb036240e9b6c7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lostObjectsImages: []
+  lostObjectsImages:
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  - {fileID: 4222270666131285684}
+  - {fileID: 3249389953890251257}
+  - {fileID: 3484919119805496077}
+  available: 0
   commandController: {fileID: 0}
 --- !u!1 &6333608503187611781
 GameObject:
@@ -189,7 +250,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6333608503187611781}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -264,7 +325,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9065569168331893941}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 

@@ -14,8 +14,6 @@ public class CommandDisplayManager : MonoBehaviour
     // Start is called before the first frame update
     public void AwakeCommand()
     {
-
-        Debug.Log("ESTOY AQUII");
         for(int i = 0; i < 3; ++i)
         {
             lostObjectsImages.Add(transform.GetChild(i).gameObject.GetComponent<Image>());
