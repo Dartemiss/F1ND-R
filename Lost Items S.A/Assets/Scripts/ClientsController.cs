@@ -26,6 +26,8 @@ public class ClientsController : MonoBehaviour
 
     public LostDimension lostDimension;
 
+    int consecutiveSucceses = 0;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -76,6 +78,7 @@ public class ClientsController : MonoBehaviour
                 commands.RemoveAt(i);
                 LevelSoundManager.instance.PlayWrongSound();
 
+                consecutiveSucceses = 0;
                 break;
             }
         }
@@ -104,14 +107,17 @@ public class ClientsController : MonoBehaviour
         if(success)
         {
             //Earn points
-            GameManager.instance.AddScore(commandScore);
             numSuccesCommands++;
+            consecutiveSucceses++;
+            commandScore += consecutiveSucceses * 15;
+            GameManager.instance.AddScore(commandScore);
             LevelSoundManager.instance.PlayCorrectSound();
             CheckDifficulty();
         }
         else
         {
             //Lose points
+            consecutiveSucceses = 0;
             GameManager.instance.SubstractScore(50);
             LevelSoundManager.instance.PlayWrongSound();
         }
