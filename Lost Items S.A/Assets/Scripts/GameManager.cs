@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public int currentScore = 0;
     float totalLevelTime = 300f;
 
+    List<float> goalStarScores = new List<float>(){2500, 4500, 10000};
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -44,8 +46,9 @@ public class GameManager : MonoBehaviour
 
         if(levelTimer.HasTimedOut())
         {
-            //Lose
-            Debug.Log("You lost little useless noob.");
+            //End game
+            isRunning = false;
+            SceneManager.LoadScene(0);
         }
     }
 
