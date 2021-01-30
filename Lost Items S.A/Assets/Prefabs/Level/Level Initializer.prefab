@@ -109,6 +109,7 @@ MonoBehaviour:
   playerSpawns:
   - {fileID: 2518900653678126044}
   - {fileID: 2518900652618210230}
+  - {fileID: 2518900653329548259}
   playerPrefab: {fileID: 4067447924014779604, guid: 1b33662ca95cd674e94ab967c6d6a3d3, type: 3}
 --- !u!1 &2518900653678126047
 GameObject:
