@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 movement;
     NavMeshAgent agent;
 
+    [SerializeField]
+    private int playerIndex = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,4 +32,6 @@ public class PlayerMovement : MonoBehaviour
     {
         movementInput = direction;
     }
+
+    public int GetPlayerIndex() { return playerIndex; }
 }
