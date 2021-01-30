@@ -6,6 +6,7 @@ public class CommandController : MonoBehaviour
 {
 
     FlamaTimer commandTimer;
+    
     public List<LostObject.LostObjectType> commandItems = new List<LostObject.LostObjectType>();
     public int commandScore = 0;
     
@@ -14,7 +15,7 @@ public class CommandController : MonoBehaviour
         commandTimer = gameObject.GetComponent<FlamaTimer>();
         
         commandTimer.StartTimer(time);
-        items = commandItems;
+        commandItems = items;
         items.Sort();
 
         commandScore = 300 + items.Count * 100;
@@ -25,11 +26,11 @@ public class CommandController : MonoBehaviour
         if(commandTimer.HasTimedOut())
         {
 
-            return false;
+            return true;
             
         }
         
-        return true;
+        return false;
     }
 
     public bool CheckDeliver(List<LostObject.LostObjectType> deliveredItems)
@@ -50,6 +51,11 @@ public class CommandController : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void DestroyCommand()
+    {
+        Destroy(gameObject);
     }
 }
 

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     private FlamaTimer levelTimer;
-    int currentScore = 0;
+    public int currentScore = 0;
     float totalLevelTime = 300f;
 
     // Start is called before the first frame update
