@@ -109,10 +109,6 @@ public class PlayerController : MonoBehaviour
             carryingObject = true;
 
             LostObject lostObjectScript = currentTargetedObject.GetComponent<LostObject>();
-            if (lostObjectScript.IsInConveyorBelt())
-            {
-                lostObjectScript.RemoveFromConveyorBelt();
-            }
         }
     }
 
