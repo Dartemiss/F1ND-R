@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class DeliverableTableController : MonoBehaviour
 {
+    public static DeliverableTableController instance;
+
+    // Start is called before the first frame update
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
     public List<LostObject.LostObjectType> objectsTypes = new List<LostObject.LostObjectType>();
 
     List<Transform> counterSlots = new List<Transform>(); 
