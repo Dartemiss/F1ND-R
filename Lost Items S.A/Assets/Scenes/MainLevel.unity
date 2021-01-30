@@ -420,6 +420,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1052472107755567390, guid: 17aa5836e15f00b4082c2fcdf6145b16, type: 3}
+      propertyPath: m_TagString
+      value: TableButton
+      objectReference: {fileID: 0}
     - target: {fileID: 1052472107756636121, guid: 17aa5836e15f00b4082c2fcdf6145b16, type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
@@ -488,6 +492,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1052472108598165734, guid: 17aa5836e15f00b4082c2fcdf6145b16, type: 3}
+      propertyPath: clientController
+      value: 
+      objectReference: {fileID: 812313577}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17aa5836e15f00b4082c2fcdf6145b16, type: 3}
 --- !u!1 &752359342
