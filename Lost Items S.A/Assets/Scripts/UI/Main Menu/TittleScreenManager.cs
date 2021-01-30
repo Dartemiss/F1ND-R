@@ -20,9 +20,6 @@ public class TittleScreenManager : MonoBehaviour
         }
     }
 
-    int hoveredButtonIndex = -1;
-    public List<Button> mainMenuButtons;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -33,45 +30,6 @@ public class TittleScreenManager : MonoBehaviour
     void Update()
     {
 
-    }
-
-    public void NavigateDown()
-    {
-        if (hoveredButtonIndex == -1)
-        {
-            hoveredButtonIndex = 0;
-            return;
-        }
-
-        hoveredButtonIndex = (hoveredButtonIndex + 1) % mainMenuButtons.Count;
-        mainMenuButtons[hoveredButtonIndex].Select();
-    }
-
-    public void NavigateUp()
-    {
-        if (hoveredButtonIndex == -1)
-        {
-            hoveredButtonIndex = 0;
-            return;
-        }
-
-        hoveredButtonIndex = hoveredButtonIndex - 1;
-        if (hoveredButtonIndex == -1)
-        {
-            hoveredButtonIndex = mainMenuButtons.Count - 1;
-        }
-        mainMenuButtons[hoveredButtonIndex].Select();
-    }
-
-    public void AcceptButton()
-    {
-        if (hoveredButtonIndex == -1)
-        {
-            hoveredButtonIndex = 0;
-            return;
-        }
-
-        mainMenuButtons[hoveredButtonIndex].onClick.Invoke();
     }
 
     public void Close()
