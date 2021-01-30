@@ -22,9 +22,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Interact",
+                    "name": "Back",
                     "type": "Button",
-                    "id": "2bbab10e-f13f-47ce-967c-383cdfcfab2b",
+                    "id": "77055158-a0fb-4e8d-b5b6-bf38c50a8cb2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -121,23 +121,23 @@
                 },
                 {
                     "name": "",
-                    "id": "6968475e-5ab4-4d25-97f4-55b8591fe08f",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "Press",
+                    "id": "1388e889-b0ee-4096-9602-c440e2815517",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "Back",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "36053b0f-3998-4c11-bb26-b28e4a2a9a6f",
-                    "path": "<Keyboard>/enter",
-                    "interactions": "Press",
+                    "id": "d5f6ba64-3b11-42bf-ad00-3268a5adc755",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "Back",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

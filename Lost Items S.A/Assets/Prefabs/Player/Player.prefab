@@ -213,7 +213,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   currentTargetedObject: {fileID: 0}
-  deliverableTable: {fileID: 0}
 --- !u!195 &1434465413685587847
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -225,9 +224,9 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 999
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 999
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
