@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerSelectionManager : MonoBehaviour
 {
+
+
     public enum InputType
     {
         KEYBOARD,
@@ -13,6 +15,27 @@ public class PlayerSelectionManager : MonoBehaviour
 
     public GameObject canvas;
 
+    [SerializeField]
+    private GameObject startButton;
+
+    [SerializeField]
+    private GameObject exitButton;
+
+
+    public static PlayerSelectionManager instance = null;
+
+    //Awake is always called before any Start functions
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +47,8 @@ public class PlayerSelectionManager : MonoBehaviour
     {
         if(Keyboard.current.escapeKey.wasPressedThisFrame || Gamepad.current.bButton.wasPressedThisFrame)
         {
-            Close();
+            //TODO!
+            //Close();
         }
     }
 
@@ -35,7 +59,7 @@ public class PlayerSelectionManager : MonoBehaviour
 
     public void ConfirmPlayers()
     {
-        GameManager.instance.LoadMainLevel();
+        if (PlayerConfigurationManager.Instance.AllReadyStartGame()) { GameManager.instance.LoadMainLevel(); }
     }
 
     public void Close()
@@ -43,6 +67,7 @@ public class PlayerSelectionManager : MonoBehaviour
         transform.gameObject.SetActive(false);
         PlayerConfigurationManager.Instance.StopPlayerConfiguration();
         canvas.SetActive(true);
+        MainMenuManager.instance.OpenTitleScreen();
     }
 
     public void Open()
@@ -50,5 +75,12 @@ public class PlayerSelectionManager : MonoBehaviour
         transform.gameObject.SetActive(true);
         PlayerConfigurationManager.Instance.StartPlayerConfiguration();
         canvas.SetActive(false);
+        ShowButtons(false);
+    }
+
+    public void ShowButtons(bool enableButton)
+    {
+        startButton.SetActive(enableButton);
+        exitButton.SetActive(enableButton);
     }
 }

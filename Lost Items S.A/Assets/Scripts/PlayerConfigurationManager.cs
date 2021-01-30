@@ -45,7 +45,7 @@ public class PlayerConfigurationManager : MonoBehaviour
         playerConfigs[index].IsReady = true;
         if (playerConfigs.Count == maxPlayers && playerConfigs.All(p => p.IsReady == true))
         {
-            SceneManager.LoadScene("MainLevel");
+            GameManager.instance.LoadMainLevel();
         }
     }
 
@@ -62,10 +62,16 @@ public class PlayerConfigurationManager : MonoBehaviour
         }
     }
 
-    public void AllReadyStartGame()
+    public bool AllReadyStartGame()
     {
-        maxPlayers = currentPlayers;
-        SceneManager.LoadScene("MainLevel");
+        if (playerConfigs.All(p => p.IsReady == true))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public List<PlayerConfiguration> GetPlayerConfigurations()
@@ -81,9 +87,11 @@ public class PlayerConfigurationManager : MonoBehaviour
 
     public void StopPlayerConfiguration()
     {
-        isStarted = true;
+        isStarted = false;
         playerInputManager.DisableJoining();
         playerConfigs.Clear();
+        currentPlayers = 0;
+        Debug.Log("Hellowww");
     }
 }
 
