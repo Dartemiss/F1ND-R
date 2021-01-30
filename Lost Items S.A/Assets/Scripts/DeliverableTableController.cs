@@ -9,7 +9,7 @@ public class DeliverableTableController : MonoBehaviour
     List<Transform> counterSlots = new List<Transform>(); 
     List<bool> availableSlots = new List<bool>(){true, true, true};
     List<GameObject> counterGameObjects = new List<GameObject>() {null, null, null};
-
+    public List<GameObject> slotsGameObjects = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,8 @@ public class DeliverableTableController : MonoBehaviour
         for(int i = 1; i < gameObject.transform.childCount - 1; ++i)
         {
             counterSlots.Add(gameObject.transform.GetChild(i).transform);
-            counterGameObjects.Add(gameObject.transform.GetChild(i).transform.GetChild(0).gameObject);
+            slotsGameObjects.Add(gameObject.transform.GetChild(i).transform.GetChild(0).gameObject);
+            objectsTypes.Add(LostObject.LostObjectType.NONE);
         }
     }
 
@@ -31,21 +32,41 @@ public class DeliverableTableController : MonoBehaviour
         }
     }
 
-    bool PutObject(int indexCounter, GameObject lostObject)
+    public bool PutObject(GameObject lostObject, GameObject slotObject,  LostObject currentLostObject)
     {
-        if(availableSlots[indexCounter] == false)
+        bool existsSlot = false;
+
+        int indexCounter = 0;
+        foreach(GameObject slot in slotsGameObjects)
+        {
+            if(slot == slotObject)
+            {
+                existsSlot = true;
+                break;
+            }
+            ++indexCounter;
+        }
+
+        if(!existsSlot ||  !availableSlots[indexCounter])
         {
             return false;
         }
 
+        Debug.Log("1");
         lostObject.transform.position = counterSlots[indexCounter].position;
+        lostObject.transform.parent = transform;
+        Debug.Log("2");
+        objectsTypes[indexCounter] = currentLostObject.lostObjectType;
+        Debug.Log("3");
         availableSlots[indexCounter] = false;
+        Debug.Log("4");
         counterGameObjects[indexCounter] = lostObject;
+        Debug.Log("5");
 
         return true;
     }
 
-    bool PickObject(int indexCounter, ref GameObject lostObject)
+    public bool PickObject(int indexCounter, ref GameObject lostObject)
     {
         if(availableSlots[indexCounter] == true)
         {

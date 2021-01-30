@@ -79,7 +79,6 @@ public class ConveyorBelt : MonoBehaviour
             if (spawnedLostObject.currentTimeStampIndex == beltTimeStamps.Count - 1)
             {
                 objectsToRemove.Add(conveyorBeltObjects[i]);
-                Debug.Log("Hola");
 
             }
             else
