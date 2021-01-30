@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    bool isRunning = false; 
+    public bool isRunning; 
 
     private FlamaTimer levelTimer;
     public int currentScore = 0;
@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
+            isRunning = false;
         }
         else
         {
@@ -37,7 +38,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-        
+
         HUDManager.instance.UpdateTime(levelTimer.currentTimeRemaining);
         HUDManager.instance.UpdateScore(currentScore);
 
