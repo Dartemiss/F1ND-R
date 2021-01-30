@@ -39,7 +39,7 @@ public class PlayerInputHandler : MonoBehaviour
             OnMove(obj);
         }
 
-        if(obj.action.name == controls.Gameplay.Interact.name)
+        if(obj.action.name == controls.Gameplay.Interact.name && obj.performed)
         {
             OnInteract();
         }
