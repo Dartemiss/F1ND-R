@@ -40,11 +40,12 @@ public class PlayerController : MonoBehaviour
     void CheckObjectsInFront()
     {
 
-         Collider[] hitColliders = Physics.OverlapBox(
+        Collider[] hitColliders = Physics.OverlapBox(
             colliderTransform.position,
-              colliderTransform.localScale / 2,
-               Quaternion.identity,
-                m_LayerMask);
+            colliderTransform.localScale / 2,
+            Quaternion.identity,
+            m_LayerMask
+        );
 
          int i = 0;
          int closerIndex = 0;
@@ -67,19 +68,39 @@ public class PlayerController : MonoBehaviour
 
              ++i;
          }
-        
-        if(hitColliders.Length == 0 || !found)
+
+        Outline outlineScript;
+        if (hitColliders.Length == 0 || !found)
         {
+            if (currentTargetedObject != null)
+            {
+                outlineScript = currentTargetedObject.GetComponent<Outline>();
+                if (outlineScript != null)
+                {
+                    outlineScript.OutlineWidth = 0f;
+                }
+            }
             currentTargetedObject = null;
             return;
         }
 
-         currentTargetedObject = hitColliders[closerIndex].gameObject; 
+        currentTargetedObject = hitColliders[closerIndex].gameObject;
+
+        outlineScript = currentTargetedObject.GetComponent<Outline>();
+        if (outlineScript != null)
+        {
+            outlineScript.OutlineWidth = 2f;
+        }
     }
 
     void PickUpObject()
     {
-        if(currentTargetedObject != null && currentTargetedObject.tag == "LostItem")
+        if (currentTargetedObject == null)
+        {
+            return;
+        }
+
+        if (currentTargetedObject.tag == "LostItem")
         {
             //Check if object is in Counter
             deliverableTable.PickObject(currentTargetedObject);
@@ -89,7 +110,12 @@ public class PlayerController : MonoBehaviour
             currentLostObject = currentTargetedObject.GetComponent<LostObject>();
             currentLostGameObject = currentTargetedObject;
             carryingObject = true;
-            
+
+            LostObject lostObjectScript = currentTargetedObject.GetComponent<LostObject>();
+            if (lostObjectScript.IsInConveyorBelt())
+            {
+                lostObjectScript.RemoveFromConveyorBelt();
+            }
         }
     }
 
