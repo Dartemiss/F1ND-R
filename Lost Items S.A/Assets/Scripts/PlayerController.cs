@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
         
          int closerIndex = 0;
          float maxDistance = 10000f;
+         bool found = false;
          for (int i = 0; i < hitColliders.Length; ++i)
          {
             bool isInteractableObject = false;
@@ -57,12 +58,13 @@ public class PlayerController : MonoBehaviour
                  {
                     maxDistance = distance;
                     closerIndex = i;
+                    found = true;
                  }
              }
          }
 
         Outline outlineScript;
-        if (hitColliders.Length == 0)
+        if (hitColliders.Length == 0 || !found)
         {
             if (currentTargetedObject != null)
             {
@@ -84,6 +86,7 @@ public class PlayerController : MonoBehaviour
                     outlineScript.OutlineWidth = 0f;
                 }
             }
+
             currentTargetedObject = hitColliders[closerIndex].gameObject;
 
             outlineScript = currentTargetedObject.GetComponent<Outline>();
