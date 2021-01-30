@@ -125,7 +125,6 @@ public class ClientsController : MonoBehaviour
         {
             return;
         }
-        Debug.Log("Creating Command.");
         uint numOfObjects = (uint)Random.Range(minNumberOfObjectsPerCommand, maxNumberOfObjectsPerCommand);
         List<LostObject.LostObjectType> commandItems = new List<LostObject.LostObjectType>();
     

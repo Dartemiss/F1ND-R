@@ -8285,6 +8285,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 189.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2268876006618181407, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
+      propertyPath: available
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2722625148034091065, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -8373,10 +8377,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 3964230011908313433, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
+      propertyPath: available
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5200261813792194764, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
+      propertyPath: available
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5539939120050195032, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
       propertyPath: commandDisplayerObject
       value: 
-      objectReference: {fileID: 4943660607777862094, guid: ad6e39fcf907d23438e07acbcfaaf87b, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5539939120050195032, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
       propertyPath: commandDisplayManagers.Array.size
       value: 0
@@ -8396,6 +8408,14 @@ PrefabInstance:
     - target: {fileID: 5539939120050195032, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
       propertyPath: commandDisplayManagers.Array.data[4]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686627590179399262, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
+      propertyPath: available
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6939275286976820374, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
+      propertyPath: available
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}

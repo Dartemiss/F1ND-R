@@ -14,7 +14,7 @@ public class CommandsDisplayManager : MonoBehaviour
     {
         for(int i = 0; i < 5; ++i)
         {
-            commandDisplayManagers.Add(commandDisplayerObject.GetComponent<CommandDisplayManager>());
+            commandDisplayManagers.Add(transform.GetChild(i).transform.GetChild(1).gameObject.GetComponent<CommandDisplayManager>());
             commandDisplayManagers[i].AwakeCommand();
         }
     }
@@ -54,7 +54,6 @@ public class CommandsDisplayManager : MonoBehaviour
         int i = 0;
         foreach (CommandDisplayManager commandDisplayManager in commandDisplayManagers)
         {
-            Debug.Log(commandDisplayManager.IsAvailable());
             if (commandDisplayManager.IsAvailable())
             {
                 return i;
