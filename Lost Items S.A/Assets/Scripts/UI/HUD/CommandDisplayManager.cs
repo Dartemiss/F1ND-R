@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class CommandDisplayManager : MonoBehaviour
 {
-    Image commandImage;
+    public Image lostObject1Image;
+    public Image lostObject2Image;
+    public Image lostObject3Image;
 
     bool available = true;
 
@@ -14,7 +16,7 @@ public class CommandDisplayManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        commandImage = GetComponent<Image>();
+        Hide();
     }
 
     // Update is called once per frame
@@ -23,16 +25,27 @@ public class CommandDisplayManager : MonoBehaviour
         
     }
 
-    public void Show(Sprite lostObjectSprite, CommandController command)
+    public void Show(Sprite lostObject1Sprite, Sprite lostObject2Sprite, Sprite lostObject3Sprite, CommandController command)
     {
-        commandImage.sprite = lostObjectSprite;
+
+        lostObject1Image.enabled = true;
+        lostObject2Image.enabled = true;
+        lostObject3Image.enabled = true;
+
+        lostObject1Image.sprite = lostObject1Sprite;
+        lostObject2Image.sprite = lostObject2Sprite;
+        lostObject3Image.sprite = lostObject3Sprite;
+
         available = false;
         commandController = command;
     }
 
     public void Hide()
     {
-        commandImage.sprite = null;
+        lostObject1Image.enabled = false;
+        lostObject2Image.enabled = false;
+        lostObject3Image.enabled = false;
+
         available = true;
         commandController = null;
     }
