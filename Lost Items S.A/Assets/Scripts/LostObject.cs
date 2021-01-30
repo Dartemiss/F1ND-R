@@ -14,6 +14,8 @@ public class LostObject : MonoBehaviour
 
     public LostObjectType lostObjectType;
 
+    ConveyorBelt conveyorBelt = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +26,20 @@ public class LostObject : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SetConveyorBelt(ConveyorBelt conveyorBelt)
+    {
+        this.conveyorBelt = conveyorBelt;
+    }
+
+    public void RemoveFromConveyorBelt()
+    {
+        this.conveyorBelt = null;
+    }
+
+    public bool IsInConveyorBelt()
+    {
+        return conveyorBelt != null;
     }
 }

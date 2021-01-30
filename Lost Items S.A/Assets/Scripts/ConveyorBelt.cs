@@ -9,7 +9,7 @@ public class ConveyorBelt : MonoBehaviour
     public List<Transform> beltPath;
     public float beltSpeed;
 
-    struct ConveyorBeltObject
+    public struct ConveyorBeltObject
     {
         public GameObject lostObject;
         public int currentTimeStampIndex;
@@ -107,6 +107,34 @@ public class ConveyorBelt : MonoBehaviour
         GameObject spawnedGameObject = LostObjectFactory.instance.CreateLostObject(lostObjectType);
         spawnedGameObject.transform.position = lostObjectSpawnPoint.position;
 
+        spawnedGameObject.GetComponent<LostObject>().SetConveyorBelt(this);
+
         conveyorBeltObjects.Add(new ConveyorBeltObject(spawnedGameObject, 0));
+    }
+
+    public void RemoveConveyorLostObject(GameObject lostObject)
+    {
+        int lostObjectIndex = 0;
+        bool found = false;
+        while (!found && lostObjectIndex < conveyorBeltObjects.Count)
+        {
+            if (conveyorBeltObjects[lostObjectIndex].lostObject == lostObject)
+            {
+                found = true;
+            }
+            else
+            {
+                ++lostObjectIndex;
+            }
+        }
+        if (lostObjectIndex == conveyorBeltObjects.Count)
+        {
+            Debug.Log("WHAAATTT IMPOSSIBLE!");
+        }
+        else
+        {
+            conveyorBeltObjects.RemoveAt(lostObjectIndex);
+        }
+        lostObject.GetComponent<LostObject>().RemoveFromConveyorBelt();
     }
 }

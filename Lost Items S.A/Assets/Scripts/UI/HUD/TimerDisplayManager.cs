@@ -23,13 +23,19 @@ public class TimerDisplayManager : MonoBehaviour
         int timeInMinutes = (int)time / 60;
         int timeInSeconds = (int)time % 60;
 
-        if (timeInMinutes < 10)
+        string timeInMintuesString = timeInMinutes.ToString();
+        if (timeInMinutes < 10) 
         {
-            timeText.text = "0" + timeInMinutes + ":" + timeInSeconds;
+            timeInMintuesString= "0" + timeInMintuesString;
         }
-        else
+
+        string timeInSecondsString = timeInSeconds.ToString();
+        if (timeInSeconds < 10)
         {
-            timeText.text = timeInMinutes + ":" + timeInSeconds;
+            timeInSecondsString = "0" + timeInSecondsString;
         }
+
+        timeText.text = timeInMintuesString + ":" + timeInSecondsString;
+
     }
 }
