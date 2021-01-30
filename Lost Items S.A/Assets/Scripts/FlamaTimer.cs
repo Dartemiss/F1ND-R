@@ -58,4 +58,9 @@ public class FlamaTimer : MonoBehaviour
         currentTimeRemaining = totalTimeRemaining;
         isActive = true;
     }
+
+    public void SetTotalTime(float time)
+    {
+        totalTimeRemaining = time;
+    }
 }

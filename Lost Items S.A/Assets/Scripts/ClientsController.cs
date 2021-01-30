@@ -13,28 +13,50 @@ public class ClientsController : MonoBehaviour
     public DeliverableTableController counterController;
     public CommandsDisplayManager displayerManager;
 
-    uint minNumberOfObjectsPerCommand = 3;
-    uint maxNumberOfObjectsPerCommand = 3;
+    uint minNumberOfObjectsPerCommand = 1;
+    uint maxNumberOfObjectsPerCommand = 1;
 
     uint maxCommands = 5;
     public uint numSuccesCommands = 0;
     FlamaTimer nextCommandTimer;
 
+    float timeForNextTask = 10f;
+
+    uint numOfCommandsPerCreation = 1;
+
+    public LostDimension lostDimension;
+
     // Start is called before the first frame update
+    void Awake()
+    {
+       nextCommandTimer = transform.gameObject.AddComponent<FlamaTimer>();
+       nextCommandTimer.StartTimer(timeForNextTask); 
+    }
+
     void Start()
     {
-       CreateCommand();
-
-       nextCommandTimer = transform.gameObject.AddComponent<FlamaTimer>();
-       nextCommandTimer.StartTimer(10f); 
+       for(int i = 0; i < 3; i++)
+       {
+           CreateCommand();
+       }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(commands.Count <= 0)
+        {
+            for(int i = 0; i < numOfCommandsPerCreation; ++i)
+            {
+                CreateCommand();
+            }
+            nextCommandTimer.Reset();
+        }
+
+
         if(nextCommandTimer.HasTimedOut())
         {
-            if(commands.Count < maxCommands)
+            for(int i = 0; i < numOfCommandsPerCreation; ++i)
             {
                 CreateCommand();
             }
@@ -52,7 +74,7 @@ public class ClientsController : MonoBehaviour
                 displayerManager.EraseCommand(commands[i]);
                 commands[i].DestroyCommand();
                 commands.RemoveAt(i);
-
+                LevelSoundManager.instance.PlayWrongSound();
 
                 break;
             }
@@ -85,7 +107,6 @@ public class ClientsController : MonoBehaviour
             GameManager.instance.AddScore(commandScore);
             numSuccesCommands++;
             LevelSoundManager.instance.PlayCorrectSound();
-            Debug.Log("Earning points");
             CheckDifficulty();
         }
         else
@@ -93,7 +114,6 @@ public class ClientsController : MonoBehaviour
             //Lose points
             GameManager.instance.SubstractScore(50);
             LevelSoundManager.instance.PlayWrongSound();
-            Debug.Log("Losing points");
         }
 
         counterController.ClearTable();
@@ -101,6 +121,11 @@ public class ClientsController : MonoBehaviour
 
     void CreateCommand()
     {
+        if(commands.Count >= maxCommands)
+        {
+            return;
+        }
+        Debug.Log("Creating Command.");
         uint numOfObjects = (uint)Random.Range(minNumberOfObjectsPerCommand, maxNumberOfObjectsPerCommand);
         List<LostObject.LostObjectType> commandItems = new List<LostObject.LostObjectType>();
     
@@ -129,19 +154,30 @@ public class ClientsController : MonoBehaviour
 
     void CheckDifficulty()
     {
-        if(numSuccesCommands > 12)
+        if(numSuccesCommands == 12)
         {
             maxNumberOfObjectsPerCommand = 3;
             minNumberOfObjectsPerCommand = 2;
+            timeForNextTask -= 2f;
+            lostDimension.minTimePerSpawn = 0.25f;
+            lostDimension.maxTimePerSpawn = 0.75f;
         }
-        else if(numSuccesCommands > 8)
+        else if(numSuccesCommands == 8)
         {
             maxNumberOfObjectsPerCommand = 3;
+            timeForNextTask -= 1f;
+            lostDimension.minTimePerSpawn = 0.5f;
+            numOfCommandsPerCreation++;
         }
-        else if(numSuccesCommands > 3)
+        else if(numSuccesCommands == 3)
         {
             maxNumberOfObjectsPerCommand = 2;
+            timeForNextTask -= 1f;
+            lostDimension.maxTimePerSpawn = 1f;
+            numOfCommandsPerCreation++;
         }
+
+        nextCommandTimer.SetTotalTime(timeForNextTask);
     }
            
 }
