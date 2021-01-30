@@ -12,7 +12,7 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerController playerController;
 
     [SerializeField]
-    private MeshRenderer playerMesh;
+    private Transform playerMesh;
 
     public InputAction moveInput;
 
@@ -28,7 +28,18 @@ public class PlayerInputHandler : MonoBehaviour
     public void InitializePlayer(PlayerConfiguration config)
     {
         playerConfig = config;
-        playerMesh.material = config.PlayerMaterial;
+
+
+        foreach (Transform thisChild in playerMesh)
+        {
+            MeshRenderer thisMeshRenderer = thisChild.GetComponent<MeshRenderer>();
+
+            if (thisMeshRenderer)
+            {
+                thisMeshRenderer.material = config.PlayerMaterial;
+            }
+        }
+
         playerConfig.Input.onActionTriggered += Input_onActionTriggered;
     }
 

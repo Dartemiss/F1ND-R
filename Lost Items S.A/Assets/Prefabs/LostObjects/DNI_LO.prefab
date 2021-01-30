@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 5351777367392680323}
   - component: {fileID: -8890803803708950918}
   - component: {fileID: 7398306226351536293}
+  - component: {fileID: -8435770382957728768}
   m_Layer: 0
   m_Name: DNI_LO
-  m_TagString: Untagged
+  m_TagString: LostItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,3 +127,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.64769346, y: 0.7180467, z: 0.3197577}
   m_Center: {x: -0.006961631, y: -7.535299e-12, z: 0.13924414}
+--- !u!114 &-8435770382957728768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6901819554794067181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
