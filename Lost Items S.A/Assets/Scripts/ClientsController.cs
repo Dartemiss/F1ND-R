@@ -22,15 +22,23 @@ public class ClientsController : MonoBehaviour
 
     float timeForNextTask = 10f;
 
+    uint numOfCommandsPerCreation = 1;
+
     public LostDimension lostDimension;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-       CreateCommand();
-
        nextCommandTimer = transform.gameObject.AddComponent<FlamaTimer>();
        nextCommandTimer.StartTimer(timeForNextTask); 
+    }
+
+    void Start()
+    {
+       for(int i = 0; i < 3; i++)
+       {
+           CreateCommand();
+       }
     }
 
     // Update is called once per frame
@@ -38,14 +46,17 @@ public class ClientsController : MonoBehaviour
     {
         if(commands.Count <= 0)
         {
-            CreateCommand();
+            for(int i = 0; i < numOfCommandsPerCreation; ++i)
+            {
+                CreateCommand();
+            }
             nextCommandTimer.Reset();
         }
 
 
         if(nextCommandTimer.HasTimedOut())
         {
-            if(commands.Count < maxCommands)
+            for(int i = 0; i < numOfCommandsPerCreation; ++i)
             {
                 CreateCommand();
             }
@@ -110,6 +121,11 @@ public class ClientsController : MonoBehaviour
 
     void CreateCommand()
     {
+        if(commands.Count >= maxCommands)
+        {
+            return;
+        }
+        Debug.Log("Creating Command.");
         uint numOfObjects = (uint)Random.Range(minNumberOfObjectsPerCommand, maxNumberOfObjectsPerCommand);
         List<LostObject.LostObjectType> commandItems = new List<LostObject.LostObjectType>();
     
@@ -151,12 +167,14 @@ public class ClientsController : MonoBehaviour
             maxNumberOfObjectsPerCommand = 3;
             timeForNextTask -= 1f;
             lostDimension.minTimePerSpawn = 0.5f;
+            numOfCommandsPerCreation++;
         }
         else if(numSuccesCommands == 3)
         {
             maxNumberOfObjectsPerCommand = 2;
             timeForNextTask -= 1f;
             lostDimension.maxTimePerSpawn = 1f;
+            numOfCommandsPerCreation++;
         }
 
         nextCommandTimer.SetTotalTime(timeForNextTask);

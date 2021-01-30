@@ -7,20 +7,21 @@ public class CommandDisplayManager : MonoBehaviour
 {
 
     public List<Image> lostObjectsImages;
-    bool available = true;
+    public bool available;
 
     public CommandController commandController;
 
     // Start is called before the first frame update
-    void Start()
+    public void AwakeCommand()
     {
-        Hide();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("ESTOY AQUII");
+        for(int i = 0; i < 3; ++i)
+        {
+            lostObjectsImages.Add(transform.GetChild(i).gameObject.GetComponent<Image>());
+        }
+
+        Hide();
     }
 
     public void Show(List<Sprite> lostObjectsSprites, CommandController command)

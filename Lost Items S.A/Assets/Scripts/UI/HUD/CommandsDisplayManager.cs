@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class CommandsDisplayManager : MonoBehaviour
 {
+    public GameObject commandDisplayerObject;
+
     public List<Sprite> lostObjectSprites;
     public List<CommandDisplayManager> commandDisplayManagers;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Mario loves u
-    }
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        //Mario hates u
+        for(int i = 0; i < 5; ++i)
+        {
+            commandDisplayManagers.Add(commandDisplayerObject.GetComponent<CommandDisplayManager>());
+            commandDisplayManagers[i].AwakeCommand();
+        }
     }
 
     public void ShowCommand(CommandController command)
@@ -37,7 +37,7 @@ public class CommandsDisplayManager : MonoBehaviour
 
     }
 
-    public void  EraseCommand(CommandController command)
+    public void EraseCommand(CommandController command)
     {
         for(int i = 0; i < commandDisplayManagers.Count; ++i)
         {
@@ -54,6 +54,7 @@ public class CommandsDisplayManager : MonoBehaviour
         int i = 0;
         foreach (CommandDisplayManager commandDisplayManager in commandDisplayManagers)
         {
+            Debug.Log(commandDisplayManager.IsAvailable());
             if (commandDisplayManager.IsAvailable())
             {
                 return i;
