@@ -9,6 +9,8 @@ public class CommandDisplayManager : MonoBehaviour
 
     bool available = true;
 
+    public CommandController commandController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,15 +23,18 @@ public class CommandDisplayManager : MonoBehaviour
         
     }
 
-    public void Show(Sprite lostObjectSprite)
+    public void Show(Sprite lostObjectSprite, CommandController command)
     {
         commandImage.sprite = lostObjectSprite;
         available = false;
+        commandController = command;
     }
 
     public void Hide()
     {
+        commandImage.sprite = null;
         available = true;
+        commandController = null;
     }
 
     public bool IsAvailable()

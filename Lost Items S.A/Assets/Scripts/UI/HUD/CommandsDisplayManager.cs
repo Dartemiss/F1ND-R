@@ -10,12 +10,13 @@ public class CommandsDisplayManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Mario loves u
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Mario hates u
     }
 
     public void ShowCommand(CommandController command)
@@ -27,8 +28,20 @@ public class CommandsDisplayManager : MonoBehaviour
             Debug.Log("No command display available");
             return;
         }
-        commandDisplayManagers[i].Show(lostObjectSprite);
+        commandDisplayManagers[i].Show(lostObjectSprite, command);
 
+    }
+
+    public void  EraseCommand(CommandController command)
+    {
+        for(int i = 0; i < commandDisplayManagers.Count; ++i)
+        {
+            if(commandDisplayManagers[i].commandController == command)
+            {
+                commandDisplayManagers[i].Hide();
+                break;
+            }
+        }
     }
 
     int GetAvailableCommandDisplay()

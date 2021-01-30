@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
         CheckObjectsInFront();
         if(Keyboard.current.pKey.wasPressedThisFrame)
         {
-            Debug.Log("Interact with object.");
             InteractWithObject();   
         }
     }
