@@ -43,6 +43,7 @@ public class LostDimension : MonoBehaviour
         int conveyorBeltIndex = GetSpawnPointIndex();
         int lostObjectTypeInt = Random.Range(0, 16);
         SpawnLostObject((LostObject.LostObjectType)lostObjectTypeInt, spawnPoints[conveyorBeltIndex]);
+        LevelSoundManager.instance.PlaySpawnFromPortal();
     }
 
     int GetSpawnPointIndex()
