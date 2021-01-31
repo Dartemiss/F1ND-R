@@ -10,7 +10,7 @@ public class SpawnPlayerCardManager : MonoBehaviour
 {
     PlayerCardManager playerAssignedCardManager;
 
-    public void AssignPlayerCard()
+    public PlayerCardManager AssignPlayerCard()
     {
         PlayerInput playerInput = GetComponent<PlayerInput>();
 
@@ -32,5 +32,7 @@ public class SpawnPlayerCardManager : MonoBehaviour
             Debug.Log("Incorret input type: " + playerInput.currentControlScheme);
         }
         playerAssignedCardManager.Activate(inputType);
+
+        return playerAssignedCardManager;
     }
 }

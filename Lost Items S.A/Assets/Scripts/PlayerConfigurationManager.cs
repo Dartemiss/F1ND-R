@@ -33,6 +33,7 @@ public class PlayerConfigurationManager : MonoBehaviour
     public PlayerInputManager playerInputManager;
     bool started = false;
 
+    public List<Material> playerMaterials;
 
     public void HandlePlayerJoin(PlayerInput playerInput)
     {
@@ -53,8 +54,10 @@ public class PlayerConfigurationManager : MonoBehaviour
         {
             Debug.Log("Player Joined " + playerInput.playerIndex);
             playerInput.transform.SetParent(transform);
-            playerConfigs.Add(new PlayerConfiguration(playerInput));
-            playerInput.GetComponent<SpawnPlayerCardManager>().AssignPlayerCard();
+            PlayerConfiguration createdPlayerConfig = new PlayerConfiguration(playerInput);
+            PlayerCardManager cardManager = playerInput.GetComponent<SpawnPlayerCardManager>().AssignPlayerCard();
+            createdPlayerConfig.PlayerMaterial = playerMaterials[(int)cardManager.assignedColor];
+            playerConfigs.Add(createdPlayerConfig);
             if (playerInput.playerIndex == 0)
             {
                 playerInput.uiInputModule = MainMenuManager.instance.GetStartGameUIInput();

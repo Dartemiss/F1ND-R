@@ -15,6 +15,8 @@ public class PlayerCardManager : MonoBehaviour
     public List<Sprite> finderSprites;
     public Image finderIDSprite;
 
+    public PlayerColor assignedColor;
+
     public enum PlayerColor
     {
         RED,
@@ -63,6 +65,7 @@ public class PlayerCardManager : MonoBehaviour
 
     void SetFinderIDSprite()
     {
-        finderIDSprite.sprite = finderSprites[(int)MainMenuManager.instance.GetNextAvailableColor()];
+        assignedColor = MainMenuManager.instance.GetNextAvailableColor();
+        finderIDSprite.sprite = finderSprites[(int)assignedColor];
     }
 }
