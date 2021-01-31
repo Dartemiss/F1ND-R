@@ -8,6 +8,7 @@ using UnityEngine.InputSystem.UI;
 public class PlayerSelectionManager : MonoBehaviour
 {
     public static PlayerSelectionManager instance = null;
+    private float waitTimer = 1.5f;
 
     //Awake is always called before any Start functions
     void Awake()
@@ -53,17 +54,20 @@ public class PlayerSelectionManager : MonoBehaviour
 
     public void ConfirmPlayerSelection()
     {
+        if(waitTimer > Time.time) { return; }
         GameManager.instance.LoadMainLevel();
     }
 
     public void Close()
     {
         transform.gameObject.SetActive(false);
+        waitTimer = 1.5f;
     }
 
     public void Open()
     {
         transform.gameObject.SetActive(true);
+        waitTimer += Time.time;
     }
 
     public PlayerCardManager GetNextAvailablePlayerCard()

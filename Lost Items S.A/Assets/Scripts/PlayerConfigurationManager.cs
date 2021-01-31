@@ -89,6 +89,19 @@ public class PlayerConfigurationManager : MonoBehaviour
     {
         return playerConfigs;
     }
+
+    public void RestartDevices()
+    {
+        foreach(PlayerConfiguration config in playerConfigs)
+        {
+            config.Input.user.UnpairDevicesAndRemoveUser();
+        }
+        playerConfigs = new List<PlayerConfiguration>();
+        currentPlayers = 0;
+        maxPlayers = 3;
+        playerInputManager.EnableJoining();
+        started = false;
+    }
 }
 
 public class PlayerConfiguration
