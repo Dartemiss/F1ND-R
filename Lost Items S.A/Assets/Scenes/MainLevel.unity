@@ -524,7 +524,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &109525738
 PrefabInstance:
@@ -2901,16 +2901,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 22.358732, y: -13.182612, z: 13.290326}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1048477258}
-  - {fileID: 285671405}
-  - {fileID: 1587817822}
-  - {fileID: 1131782695}
-  - {fileID: 101220491}
-  - {fileID: 1846513041}
-  - {fileID: 513678941}
+  m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &591694626
 BoxCollider:
@@ -3274,7 +3267,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &736114397
 PrefabInstance:
@@ -3679,7 +3672,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &812313576
 GameObject:
@@ -4485,7 +4478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2144832790022600408, guid: c6e67977c0b6eea458c05bd3f7824786, type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 2144832790022600408, guid: c6e67977c0b6eea458c05bd3f7824786, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6179,7 +6172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2144832790022600408, guid: c6e67977c0b6eea458c05bd3f7824786, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 2144832790022600408, guid: c6e67977c0b6eea458c05bd3f7824786, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7032,7 +7025,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1597491354 stripped
 GameObject:
@@ -7337,7 +7330,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6239376747029759881, guid: d29e1adc88013a44aa74f0f6f3b3ade0, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 6239376747029759881, guid: d29e1adc88013a44aa74f0f6f3b3ade0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7610,7 +7603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2144832790022600408, guid: c6e67977c0b6eea458c05bd3f7824786, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 2144832790022600408, guid: c6e67977c0b6eea458c05bd3f7824786, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11342,26 +11335,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5539939120050195032, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
       propertyPath: commandDisplayerObject
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5539939120050195032, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
-      propertyPath: commandDisplayManagers.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5539939120050195032, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
-      propertyPath: commandDisplayManagers.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5539939120050195032, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
-      propertyPath: commandDisplayManagers.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5539939120050195032, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
-      propertyPath: commandDisplayManagers.Array.data[3]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5539939120050195032, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
-      propertyPath: commandDisplayManagers.Array.data[4]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5686627590179399262, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
