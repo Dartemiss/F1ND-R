@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
             isRunning = false;
             Debug.Log("You gained " + numberOfStars +  "stars, congratulations!");
             SceneManager.LoadScene(0);
+            PlayerConfigurationManager.Instance.RestartDevices();
         }
         else if(levelTimer.GetTimeRemaining() <= 30f)
         {
