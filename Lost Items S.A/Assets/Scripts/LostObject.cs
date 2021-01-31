@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class LostObject : MonoBehaviour
 {
+
+    Transform targetTransform;
+    float currentTime = 0f;
+    const float timeLerping = 0.235f;
+    bool moving = false;
+    Transform playerTransform;
+    Vector3 startingPosition = Vector3.zero;
+
     public enum LostObjectType
     {
         SOCK_YELLOW,
@@ -36,9 +44,35 @@ public class LostObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(moving)
+        {
+
+            currentTime += Time.deltaTime;
+            float progress = currentTime / timeLerping;
+            Vector3 pos = Vector3.Lerp(startingPosition, targetTransform.position, progress);
+
+            transform.position = pos;
+
+            if(progress >= 0.99f)
+            {
+                gameObject.transform.parent = playerTransform.transform;
+                moving = false;
+            }
+        }
+
         if(transform.position.y < -20f)
         {
             Destroy(gameObject);
         }
+    }
+
+    public void AtractObject(Transform target, Transform player)
+    {
+        moving = true;
+        startingPosition = transform.position;
+        currentTime = 0f;
+        targetTransform = target;
+        playerTransform = player;
     }
 }

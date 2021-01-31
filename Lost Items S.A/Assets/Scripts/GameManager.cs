@@ -62,6 +62,10 @@ public class GameManager : MonoBehaviour
             Debug.Log("You gained " + numberOfStars +  "stars, congratulations!");
             SceneManager.LoadScene(0);
         }
+        else if(levelTimer.GetTimeRemaining() <= 30f)
+        {
+            LevelSoundManager.instance.PlayAlarmSouns();
+        }
     }
 
     public void AddScore(int scoreBonus)

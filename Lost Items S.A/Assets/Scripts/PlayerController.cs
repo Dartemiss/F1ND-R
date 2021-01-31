@@ -20,9 +20,12 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator;
 
+    public ParticleSystem vfx;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        vfx.Stop();
     }
 
     // Update is called once per frame
@@ -136,12 +139,15 @@ public class PlayerController : MonoBehaviour
             //Check if object is in Counter
             DeliverableTableController.instance.PickObject(currentTargetedObject);
 
-            currentTargetedObject.transform.parent = gameObject.transform;
-            currentTargetedObject.transform.position = objectSlot.position;
+            //currentTargetedObject.transform.parent = gameObject.transform;
+            //currentTargetedObject.transform.position = objectSlot.position;
             currentLostObject = currentTargetedObject.GetComponent<LostObject>();
+            currentLostObject.AtractObject(objectSlot, transform);
             currentTargetedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             currentLostGameObject = currentTargetedObject;
             carryingObject = true;
+            animator.SetTrigger("TakingObject");
+            vfx.Play();
         }
     }
 
@@ -149,6 +155,7 @@ public class PlayerController : MonoBehaviour
     {
         if(currentLostGameObject != null)
         {
+            animator.SetTrigger("GivingObject");
             LevelSoundManager.instance.PlayDropSound();
 
             //Place it on DeliverableTable
