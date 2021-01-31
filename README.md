@@ -20,6 +20,7 @@
   </a>
 </p>
 
+![](https://github.com/Dartemiss/F1ND-R/blob/main/Media/F1NDER.png)
 ![](https://github.com/Dartemiss/F1ND-R/blob/main/Media/gameplay.png)
 
 ## Highlights
