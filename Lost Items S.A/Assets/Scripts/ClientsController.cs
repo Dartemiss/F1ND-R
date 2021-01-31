@@ -16,11 +16,11 @@ public class ClientsController : MonoBehaviour
     uint minNumberOfObjectsPerCommand = 1;
     uint maxNumberOfObjectsPerCommand = 1;
 
-    uint maxCommands = 5;
+    uint maxCommands = 3;
     public uint numSuccesCommands = 0;
     FlamaTimer nextCommandTimer;
 
-    float timeForNextTask = 10f;
+    float timeForNextTask = 20f;
 
     uint numOfCommandsPerCreation = 1;
 
@@ -162,24 +162,23 @@ public class ClientsController : MonoBehaviour
         if(numSuccesCommands == 12)
         {
             maxNumberOfObjectsPerCommand = 3;
-            minNumberOfObjectsPerCommand = 2;
+            minNumberOfObjectsPerCommand = 3;
             timeForNextTask -= 2f;
             lostDimension.minTimePerSpawn = 0.25f;
             lostDimension.maxTimePerSpawn = 0.75f;
         }
-        else if(numSuccesCommands == 8)
+        else if(numSuccesCommands == 6)
         {
             maxNumberOfObjectsPerCommand = 3;
+            minNumberOfObjectsPerCommand = 2;
             timeForNextTask -= 1f;
             lostDimension.minTimePerSpawn = 0.5f;
-            numOfCommandsPerCreation++;
         }
         else if(numSuccesCommands == 3)
         {
             maxNumberOfObjectsPerCommand = 2;
             timeForNextTask -= 1f;
             lostDimension.maxTimePerSpawn = 1f;
-            numOfCommandsPerCreation++;
         }
 
         nextCommandTimer.SetTotalTime(timeForNextTask);

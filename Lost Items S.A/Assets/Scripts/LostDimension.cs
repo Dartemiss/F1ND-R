@@ -15,8 +15,8 @@ public class LostDimension : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        minTimePerSpawn = 1f;
-        maxTimePerSpawn = 1.5f;
+        minTimePerSpawn = 0.5f;
+        maxTimePerSpawn = 1f;
         lostTimer = GetComponent<FlamaTimer>();
         spawnPointsRandomBag = new Stack<int>();
         SetNextObjectTimer();
