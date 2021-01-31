@@ -10,7 +10,10 @@ public class LevelSoundManager : MonoBehaviour
     public AudioSource dropSound;
     public AudioSource correctSound;
     public AudioSource wrongSound;
+    public AudioSource alarmSound;
     public List<AudioSource> portalSounds;
+
+    bool alarmPlayed = false;
 
     //Awake is always called before any Start functions
     void Awake()
@@ -23,18 +26,6 @@ public class LevelSoundManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void PlayCorrectSound()
@@ -61,5 +52,14 @@ public class LevelSoundManager : MonoBehaviour
     {
         int i = (int)Random.Range(0,3);
         portalSounds[i].Play();
+    }
+
+    public void PlayAlarmSouns()
+    {
+        if(!alarmPlayed)
+        {
+            alarmPlayed = true;
+            alarmSound.Play();
+        }
     }
 }
