@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadMainLevel()
     {
+        PlayerConfigurationManager.Instance.playerInputManager.DisableJoining();
         isRunning = true;
         SceneManager.LoadScene(1);
     }

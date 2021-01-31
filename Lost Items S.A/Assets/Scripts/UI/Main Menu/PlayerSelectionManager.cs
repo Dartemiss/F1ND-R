@@ -2,26 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 public class PlayerSelectionManager : MonoBehaviour
 {
-
-
-    public enum InputType
-    {
-        KEYBOARD,
-        CONTROLLER
-    }
-
-    public GameObject canvas;
-
-    [SerializeField]
-    private GameObject startButton;
-
-    [SerializeField]
-    private GameObject exitButton;
-
-
     public static PlayerSelectionManager instance = null;
 
     //Awake is always called before any Start functions
@@ -36,51 +20,64 @@ public class PlayerSelectionManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public enum InputType
+    {
+        KEYBOARD,
+        CONTROLLER,
+        NONE
+    }
+
+    public GameObject startButton;
+
+    public List<PlayerCardManager> playerCards;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Keyboard.current.escapeKey.wasPressedThisFrame || Gamepad.current.bButton.wasPressedThisFrame)
-        {
-            //TODO!
-            //Close();
-        }
     }
 
-    public void CancelPlayerSelection()
+    public void AreAllPlayhersReady()
     {
-        MainMenuManager.instance.OpenTitleScreen();
+
     }
 
-    public void ConfirmPlayers()
+    public void ConfirmPlayerSelection()
     {
-        if (PlayerConfigurationManager.Instance.AllReadyStartGame()) { GameManager.instance.LoadMainLevel(); }
+        GameManager.instance.LoadMainLevel();
     }
 
     public void Close()
     {
         transform.gameObject.SetActive(false);
-        PlayerConfigurationManager.Instance.StopPlayerConfiguration();
-        canvas.SetActive(true);
-        MainMenuManager.instance.OpenTitleScreen();
     }
 
     public void Open()
     {
         transform.gameObject.SetActive(true);
-        PlayerConfigurationManager.Instance.StartPlayerConfiguration();
-        canvas.SetActive(false);
-        ShowButtons(false);
     }
 
-    public void ShowButtons(bool enableButton)
+    public PlayerCardManager GetNextAvailablePlayerCard()
     {
-        startButton.SetActive(enableButton);
-        exitButton.SetActive(enableButton);
+        foreach (PlayerCardManager playerCard in playerCards)
+        {
+            if (!playerCard.IsAssigned())
+            {
+                return playerCard;
+            }
+        }
+
+        return null;
+    }
+
+    public InputSystemUIInputModule GetStartGameUIInput()
+    {
+        return startButton.GetComponent<InputSystemUIInputModule>();
     }
 }

@@ -7,18 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerConfigurationManager : MonoBehaviour
 {
-
-    private bool isStarted = false;
-    // Start is called before the first frame update
-    private List<PlayerConfiguration> playerConfigs;
-
-    [SerializeField]
-    private int maxPlayers = 3;
-    private int currentPlayers = 0;
-
     public static PlayerConfigurationManager Instance { get; private set; }
-
-    private PlayerInputManager playerInputManager;
 
     private void Awake()
     {
@@ -35,42 +24,46 @@ public class PlayerConfigurationManager : MonoBehaviour
         }
     }
 
-    public void SetPlayerMaterial(int index, Material material)
-    {
-        playerConfigs[index].PlayerMaterial = material;
-    }
+    private List<PlayerConfiguration> playerConfigs;
 
-    public void ReadyPlayer(int index)
+    [SerializeField]
+    private int maxPlayers = 3;
+    private int currentPlayers = 0;
+
+    public PlayerInputManager playerInputManager;
+    bool started = false;
+
+    public List<Material> playerMaterials;
+
+    public void HandlePlayerJoin(PlayerInput playerInput)
     {
-        playerConfigs[index].IsReady = true;
-        if (playerConfigs.Count == maxPlayers && playerConfigs.All(p => p.IsReady == true))
+        if (!started)
         {
-            GameManager.instance.LoadMainLevel();
+            started = true;
+            MainMenuManager.instance.OpenPlayerSelectionScreen();
         }
-    }
 
-    public void HandlePlayerJoin(PlayerInput pi)
-    {
-        if (currentPlayers > maxPlayers || !isStarted) { return; }
+        Debug.Log("Trying to joing player");
+
+        if (currentPlayers > maxPlayers)
+        {
+            return;
+        }
        
-        Debug.Log("Player Joined " + pi.playerIndex);
-        if (!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex))
+        if (!playerConfigs.Any(playerConfig => playerConfig.PlayerIndex == playerInput.playerIndex))
         {
-            pi.transform.SetParent(transform);
-            playerConfigs.Add(new PlayerConfiguration(pi));
-            ++currentPlayers;
-        }
-    }
+            Debug.Log("Player Joined " + playerInput.playerIndex);
+            playerInput.transform.SetParent(transform);
+            PlayerConfiguration createdPlayerConfig = new PlayerConfiguration(playerInput);
+            PlayerCardManager cardManager = playerInput.GetComponent<SpawnPlayerCardManager>().AssignPlayerCard();
+            createdPlayerConfig.PlayerMaterial = playerMaterials[(int)cardManager.assignedColor];
+            playerConfigs.Add(createdPlayerConfig);
+            if (playerInput.playerIndex == 0)
+            {
+                playerInput.uiInputModule = MainMenuManager.instance.GetStartGameUIInput();
+            }
 
-    public bool AllReadyStartGame()
-    {
-        if (playerConfigs.All(p => p.IsReady == true))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
+            ++currentPlayers;
         }
     }
 
@@ -78,31 +71,14 @@ public class PlayerConfigurationManager : MonoBehaviour
     {
         return playerConfigs;
     }
-
-    public void StartPlayerConfiguration()
-    {
-        isStarted = true;
-        playerInputManager.EnableJoining();
-    }
-
-    public void StopPlayerConfiguration()
-    {
-        isStarted = false;
-        playerInputManager.DisableJoining();
-        playerConfigs.Clear();
-        currentPlayers = 0;
-        Debug.Log("Hellowww");
-    }
 }
-
-
 
 public class PlayerConfiguration
 {
-    public PlayerConfiguration(PlayerInput pi)
+    public PlayerConfiguration(PlayerInput playerInput)
     {
-        PlayerIndex = pi.playerIndex;
-        Input = pi;
+        PlayerIndex = playerInput.playerIndex;
+        Input = playerInput;
 
     }
 
