@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
         }
 
         levelTimer = transform.gameObject.AddComponent<FlamaTimer>();
-        levelTimer.StartTimer(totalLevelTime);
     }
 
     // Update is called once per frame
@@ -81,8 +80,13 @@ public class GameManager : MonoBehaviour
     public void LoadMainLevel()
     {
         PlayerConfigurationManager.Instance.playerInputManager.DisableJoining();
-        isRunning = true;
         SceneManager.LoadScene(1);
+    }
+
+    public void StartGame()
+    {
+        levelTimer.StartTimer(totalLevelTime);
+        isRunning = true;
     }
 
     public void CloseGame()
