@@ -75,4 +75,10 @@ public class LostObject : MonoBehaviour
         targetTransform = target;
         playerTransform = player;
     }
+
+    public void StopAtraction()
+    {
+        moving = false;
+        gameObject.transform.parent = null;
+    }
 }
