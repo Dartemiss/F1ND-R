@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
 
             //End game
             isRunning = false;
+            Debug.Log("You gained " + numberOfStars +  "stars, congratulations!");
             SceneManager.LoadScene(0);
         }
     }
