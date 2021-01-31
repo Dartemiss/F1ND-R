@@ -170,7 +170,6 @@ public class PlayerController : MonoBehaviour
 
         if(currentTargetedObject != null && currentTargetedObject.tag == "TableButton")
         {
-            Debug.Log("HOLA MI PANA");
             DeliverableTableController.instance.DeliverCommand();
             return;
         }
