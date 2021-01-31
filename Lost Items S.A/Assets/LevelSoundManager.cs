@@ -10,6 +10,7 @@ public class LevelSoundManager : MonoBehaviour
     public AudioSource dropSound;
     public AudioSource correctSound;
     public AudioSource wrongSound;
+    public List<AudioSource> portalSounds;
 
     //Awake is always called before any Start functions
     void Awake()
@@ -54,5 +55,11 @@ public class LevelSoundManager : MonoBehaviour
     public void PlayDropSound()
     {
         dropSound.Play();
+    }
+
+    public void PlaySpawnFromPortal()
+    {
+        int i = (int)Random.Range(0,3);
+        portalSounds[i].Play();
     }
 }
