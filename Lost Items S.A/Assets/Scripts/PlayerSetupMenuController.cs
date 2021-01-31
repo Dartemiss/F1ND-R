@@ -42,7 +42,6 @@ public class PlayerSetupMenuController : MonoBehaviour
     {
         if (!inputEnabled) { return;}
 
-        PlayerConfigurationManager.Instance.SetPlayerMaterial(playerIndex, material);
         readyPanel.SetActive(true);
         readyButton.Select();
         menuPanel.SetActive(false);
@@ -53,8 +52,6 @@ public class PlayerSetupMenuController : MonoBehaviour
     {
         if(!inputEnabled) { return; }
 
-        PlayerConfigurationManager.Instance.ReadyPlayer(playerIndex);
-        PlayerSelectionManager.instance.ShowButtons(true);
         readyButton.gameObject.SetActive(false);
     }
 

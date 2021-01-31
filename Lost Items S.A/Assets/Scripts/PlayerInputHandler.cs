@@ -45,6 +45,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void Input_onActionTriggered(CallbackContext obj)
     {
+        Debug.Log("Holas");
         if(obj.action.name == controls.Gameplay.Movement.name)
         {
             OnMove(obj);

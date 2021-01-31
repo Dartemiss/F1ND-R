@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     float totalLevelTime = 300f;
 
     List<float> goalStarScores = new List<float>(){2500, 4500, 10000};
+    int numberOfStars = 0;
 
     // Start is called before the first frame update
     void Awake()
@@ -46,6 +47,17 @@ public class GameManager : MonoBehaviour
 
         if(levelTimer.HasTimedOut())
         {
+            //Compute stars
+            for(int i = goalStarScores.Count - 1; i >= 0; --i)
+            {
+                if(currentScore >= goalStarScores[i])
+                {
+                    numberOfStars = i + 1;
+                    break;
+                }
+            }
+
+
             //End game
             isRunning = false;
             SceneManager.LoadScene(0);
@@ -64,6 +76,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadMainLevel()
     {
+        PlayerConfigurationManager.Instance.playerInputManager.DisableJoining();
         isRunning = true;
         SceneManager.LoadScene(1);
     }

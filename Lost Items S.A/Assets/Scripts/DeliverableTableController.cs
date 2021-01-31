@@ -31,10 +31,10 @@ public class DeliverableTableController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 1; i < gameObject.transform.childCount - 1; ++i)
+        for(int i = 0; i < gameObject.transform.childCount - 1; ++i)
         {
             counterSlots.Add(gameObject.transform.GetChild(i).transform);
-            slotsGameObjects.Add(gameObject.transform.GetChild(i).transform.GetChild(0).gameObject);
+            //slotsGameObjects.Add(gameObject.transform.GetChild(i).transform.GetChild(0).gameObject);
             objectsTypes.Add(LostObject.LostObjectType.NONE);
         }
     }
@@ -66,7 +66,7 @@ public class DeliverableTableController : MonoBehaviour
             }
             ++indexCounter;
         }
-
+        
         if(!existsSlot ||  !availableSlots[indexCounter])
         {
             return false;

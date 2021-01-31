@@ -41,7 +41,7 @@ public class LostDimension : MonoBehaviour
     void SpawnLostObject()
     {
         int conveyorBeltIndex = GetSpawnPointIndex();
-        int lostObjectTypeInt = Random.Range(0, 3);
+        int lostObjectTypeInt = Random.Range(0, 16);
         SpawnLostObject((LostObject.LostObjectType)lostObjectTypeInt, spawnPoints[conveyorBeltIndex]);
     }
 
