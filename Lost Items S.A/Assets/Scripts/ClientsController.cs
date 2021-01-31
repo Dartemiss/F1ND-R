@@ -37,10 +37,7 @@ public class ClientsController : MonoBehaviour
 
     void Start()
     {
-       for(int i = 0; i < 3; i++)
-       {
-           CreateCommand();
-       }
+
     }
 
     // Update is called once per frame
@@ -182,6 +179,14 @@ public class ClientsController : MonoBehaviour
         }
 
         nextCommandTimer.SetTotalTime(timeForNextTask);
+    }
+
+    public void CreateFirstCommands()
+    {
+       for(int i = 0; i < 3; i++)
+       {
+           CreateCommand();
+       }
     }
            
 }
