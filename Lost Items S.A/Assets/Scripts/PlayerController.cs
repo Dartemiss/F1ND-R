@@ -20,9 +20,12 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator;
 
+    public ParticleSystem vfx;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        vfx.Stop();
     }
 
     // Update is called once per frame
@@ -143,6 +146,7 @@ public class PlayerController : MonoBehaviour
             currentLostGameObject = currentTargetedObject;
             carryingObject = true;
             animator.SetTrigger("TakingObject");
+            vfx.Play();
         }
     }
 
