@@ -299,7 +299,7 @@
                 {
                     "name": "",
                     "id": "80fcf891-ae6b-4316-9c50-f49a2289067a",
-                    "path": "<Keyboard>/enter",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -343,7 +343,7 @@
                 {
                     "name": "",
                     "id": "7731fe4c-bc39-401b-93d0-67b85bc9c3f4",
-                    "path": "<Keyboard>/enter",
+                    "path": "<Keyboard>/space",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "Keyboard",
