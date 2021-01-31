@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
                 if(currentTargetedObject.tag == "CounterSlot")
                 {
                     outlineScript = currentTargetedObject.transform.GetChild(0).gameObject.GetComponent<Outline>();
+    
                 }
                 else
                 {
@@ -105,13 +106,20 @@ public class PlayerController : MonoBehaviour
 
             currentTargetedObject = hitColliders[closerIndex].gameObject;
 
-            outlineScript = currentTargetedObject.GetComponent<Outline>();
+            if(currentTargetedObject.tag == "CounterSlot")
+            {
+                outlineScript = currentTargetedObject.transform.GetChild(0).gameObject.GetComponent<Outline>();
+
+            }
+            else
+            {
+                outlineScript = currentTargetedObject.GetComponent<Outline>();
+            }
             if (outlineScript != null)
             {
                 outlineScript.OutlineWidth = 2f;
             }
         }
-        
     }
 
     void PickUpObject()

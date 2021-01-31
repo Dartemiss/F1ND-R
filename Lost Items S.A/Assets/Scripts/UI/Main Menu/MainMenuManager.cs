@@ -55,6 +55,7 @@ public class MainMenuManager : MonoBehaviour
     {
         tittleScreenManager.Close();
         playerSelectionManager.Open();
+        MainMenuSoundManager.instance.PlayPressStartSound();
     }
     
     public PlayerCardManager GetNextAvailableCard()
