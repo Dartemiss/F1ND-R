@@ -50,8 +50,6 @@ public class CommandsDisplayManager : MonoBehaviour
         int i = 0;
         foreach (CommandDisplayManager commandDisplayManager in commandDisplayManagers)
         {
-
-            Debug.Log("Showing command pasiodj");
             if (commandDisplayManager.IsAvailable())
             {
                 return i;
