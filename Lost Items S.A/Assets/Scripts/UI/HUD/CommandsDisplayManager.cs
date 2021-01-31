@@ -4,19 +4,11 @@ using UnityEngine;
 
 public class CommandsDisplayManager : MonoBehaviour
 {
-    public GameObject commandDisplayerObject;
-
     public List<Sprite> lostObjectSprites;
     public List<CommandDisplayManager> commandDisplayManagers;
 
-
     void Awake()
     {
-        for(int i = 0; i < 5; ++i)
-        {
-            commandDisplayManagers.Add(transform.GetChild(i).transform.GetChild(1).gameObject.GetComponent<CommandDisplayManager>());
-            commandDisplayManagers[i].AwakeCommand();
-        }
     }
 
     public void ShowCommand(CommandController command)
@@ -35,6 +27,10 @@ public class CommandsDisplayManager : MonoBehaviour
         }
         commandDisplayManagers[i].Show(sprites, command);
 
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        float commandDisplayManagerXPos = rectTransform.rect.width / 2f -  Random.Range(50, rectTransform.rect.width - 50);
+        float commandDisplayManagerYPos = rectTransform.rect.height / 2f - Random.Range(50, rectTransform.rect.height - 50);
+        commandDisplayManagers[i].transform.localPosition = new Vector3(commandDisplayManagerXPos, commandDisplayManagerYPos, 0);
     }
 
     public void EraseCommand(CommandController command)
@@ -54,6 +50,8 @@ public class CommandsDisplayManager : MonoBehaviour
         int i = 0;
         foreach (CommandDisplayManager commandDisplayManager in commandDisplayManagers)
         {
+
+            Debug.Log("Showing command pasiodj");
             if (commandDisplayManager.IsAvailable())
             {
                 return i;
