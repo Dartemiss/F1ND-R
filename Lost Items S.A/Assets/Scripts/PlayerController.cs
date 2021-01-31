@@ -142,6 +142,7 @@ public class PlayerController : MonoBehaviour
             currentTargetedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             currentLostGameObject = currentTargetedObject;
             carryingObject = true;
+            animator.SetTrigger("TakingObject");
         }
     }
 
@@ -149,6 +150,7 @@ public class PlayerController : MonoBehaviour
     {
         if(currentLostGameObject != null)
         {
+            animator.SetTrigger("GivingObject");
             LevelSoundManager.instance.PlayDropSound();
 
             //Place it on DeliverableTable
