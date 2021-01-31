@@ -62,6 +62,11 @@ public class MainMenuManager : MonoBehaviour
         return playerSelectionManager.GetNextAvailablePlayerCard();
     }
 
+    public void SetPlayerOneInputType(PlayerSelectionManager.InputType inputType)
+    {
+        playerSelectionManager.SetPlayerOneInputType(inputType);
+    }
+
     public InputSystemUIInputModule GetStartGameUIInput()
     {
         return playerSelectionManager.GetStartGameUIInput();

@@ -261,54 +261,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1035404202 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5257001728743531713, guid: 27dec963910a73e4c85c6180dc4e5881, type: 3}
-  m_PrefabInstance: {fileID: 5257001728545918315}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1035404207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1035404202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MoveRepeatDelay: 0.5
-  m_MoveRepeatRate: 0.1
-  m_ActionsAsset: {fileID: -944628639613478452, guid: e6380300bf6b57643a1f36be1cf95d3a, type: 3}
-  m_PointAction: {fileID: -2127640135073544625, guid: e6380300bf6b57643a1f36be1cf95d3a, type: 3}
-  m_MoveAction: {fileID: -5791826863977254976, guid: e6380300bf6b57643a1f36be1cf95d3a, type: 3}
-  m_SubmitAction: {fileID: 2739542067713658895, guid: e6380300bf6b57643a1f36be1cf95d3a, type: 3}
-  m_CancelAction: {fileID: 7495788794770115013, guid: e6380300bf6b57643a1f36be1cf95d3a, type: 3}
-  m_LeftClickAction: {fileID: 8446083025191339917, guid: e6380300bf6b57643a1f36be1cf95d3a, type: 3}
-  m_MiddleClickAction: {fileID: 0}
-  m_RightClickAction: {fileID: 0}
-  m_ScrollWheelAction: {fileID: 0}
-  m_TrackedDevicePositionAction: {fileID: 0}
-  m_TrackedDeviceOrientationAction: {fileID: 0}
-  m_DeselectOnBackgroundClick: 1
-  m_PointerBehavior: 0
---- !u!114 &1035404208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1035404202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b16c6f78230fa4964a222622d8aae332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 1035404202}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
-  m_PlayerRoot: {fileID: 1035404202}
 --- !u!1 &1122595048
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,10 +660,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2397668492213896055, guid: 27dec963910a73e4c85c6180dc4e5881, type: 3}
-      propertyPath: m_FirstSelected
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5257001729193107282, guid: 27dec963910a73e4c85c6180dc4e5881, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -804,6 +752,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5257001730008079995, guid: 27dec963910a73e4c85c6180dc4e5881, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674712479844432491, guid: 27dec963910a73e4c85c6180dc4e5881, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5a067174cb4c64e4e96062c40a640795, type: 3}
+    - target: {fileID: 7674712481748060732, guid: 27dec963910a73e4c85c6180dc4e5881, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6186a5daa95926a409831cbbda92eef8, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27dec963910a73e4c85c6180dc4e5881, type: 3}
 --- !u!1 &7165215629373918351

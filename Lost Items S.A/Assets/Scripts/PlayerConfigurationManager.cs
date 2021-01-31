@@ -61,6 +61,21 @@ public class PlayerConfigurationManager : MonoBehaviour
             if (playerInput.playerIndex == 0)
             {
                 playerInput.uiInputModule = MainMenuManager.instance.GetStartGameUIInput();
+
+                PlayerSelectionManager.InputType inputType;
+                if (playerInput.currentControlScheme == "Keyboard")
+                {
+                    inputType = PlayerSelectionManager.InputType.KEYBOARD;
+                }
+                else if (playerInput.currentControlScheme == "Gamepad")
+                {
+                    inputType = PlayerSelectionManager.InputType.CONTROLLER;
+                }
+                else
+                {
+                    inputType = PlayerSelectionManager.InputType.NONE;
+                }
+                MainMenuManager.instance.SetPlayerOneInputType(inputType);
             }
 
             ++currentPlayers;

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class PlayerCardManager : MonoBehaviour
 {
-    public Text requestInputText;
+    public Image requestInputText;
     public Image selectedInput;
 
     public Sprite keyboardSprite;
@@ -55,7 +55,7 @@ public class PlayerCardManager : MonoBehaviour
                 selectedInput.sprite = keyboardSprite;
                 break;
         }
-
+        selectedInput.SetNativeSize();
         selectedInput.enabled = true;
         requestInputText.enabled = false;
         assigned = true;
