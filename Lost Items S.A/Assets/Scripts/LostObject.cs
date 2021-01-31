@@ -6,10 +6,9 @@ public class LostObject : MonoBehaviour
 {
     public enum LostObjectType
     {
-        FOO_1,
-        FOO_2,
-        FOO_3,
-        SOCK,
+        SOCK_YELLOW,
+        SOCK_BLUE,
+        SOCK_GREEN,
         DNI,
         GLASSES,
         KEYS,
