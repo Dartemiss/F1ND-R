@@ -136,9 +136,10 @@ public class PlayerController : MonoBehaviour
             //Check if object is in Counter
             DeliverableTableController.instance.PickObject(currentTargetedObject);
 
-            currentTargetedObject.transform.parent = gameObject.transform;
-            currentTargetedObject.transform.position = objectSlot.position;
+            //currentTargetedObject.transform.parent = gameObject.transform;
+            //currentTargetedObject.transform.position = objectSlot.position;
             currentLostObject = currentTargetedObject.GetComponent<LostObject>();
+            currentLostObject.AtractObject(objectSlot, transform);
             currentTargetedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             currentLostGameObject = currentTargetedObject;
             carryingObject = true;
