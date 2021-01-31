@@ -11337,26 +11337,6 @@ PrefabInstance:
       propertyPath: commandDisplayerObject
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 5539939120050195032, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
-      propertyPath: commandDisplayManagers.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5539939120050195032, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
-      propertyPath: commandDisplayManagers.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5539939120050195032, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
-      propertyPath: commandDisplayManagers.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5539939120050195032, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
-      propertyPath: commandDisplayManagers.Array.data[3]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5539939120050195032, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
-      propertyPath: commandDisplayManagers.Array.data[4]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5686627590179399262, guid: 8a655e94a70dadd43b1948efe1e7b496, type: 3}
       propertyPath: available
       value: 1
