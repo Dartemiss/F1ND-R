@@ -13,25 +13,37 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private const float rotationSpeed = 50f;
 
+    [SerializeField]
+    private const float speed = 4f;
+
     public float currentSpeed;
     private Animator animator;
 
     Vector3 lastPosition;
+
+    CharacterController characterController;
     // Start is called before the first frame update
     void Start()
     {
+        characterController = GetComponent<CharacterController>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         lastPosition = transform.position;
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
         movement.Set(movementInput.x, 0f, movementInput.y);
-        agent.Move(movement * Time.deltaTime * agent.speed);
-        agent.SetDestination(transform.position + movement);
-        InstantlyTurn(agent.destination);
+        //agent.Move(movement * Time.deltaTime * agent.speed);
+        //agent.SetDestination(transform.position + movement);
+        //InstantlyTurn(agent.destination);
+        characterController.Move(movement * Time.deltaTime * speed);
+        if(movement != Vector3.zero)
+        {
+            transform.forward = movement;
+        }
+        characterController.Move(Physics.gravity * Time.deltaTime);
         currentSpeed = Mathf.Lerp(currentSpeed, (transform.position - lastPosition).magnitude, 0.7f);
         lastPosition = transform.position;
         animator.SetFloat("Speed", currentSpeed);
