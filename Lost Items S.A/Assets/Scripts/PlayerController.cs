@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
                 if(currentTargetedObject.tag == "CounterSlot")
                 {
                     outlineScript = currentTargetedObject.transform.GetChild(0).gameObject.GetComponent<Outline>();
+    
                 }
                 else
                 {
@@ -119,7 +120,6 @@ public class PlayerController : MonoBehaviour
                 outlineScript.OutlineWidth = 2f;
             }
         }
-        
     }
 
     void PickUpObject()

@@ -72,6 +72,10 @@ public class GameManager : MonoBehaviour
     public void SubstractScore(int scorePenalty)
     {
         currentScore -= scorePenalty;
+        if(currentScore < 0)
+        {
+            currentScore = 0;
+        }
     }
 
     public void LoadMainLevel()
