@@ -35,9 +35,6 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         movement.Set(movementInput.x, 0f, movementInput.y);
-        //agent.Move(movement * Time.deltaTime * agent.speed);
-        //agent.SetDestination(transform.position + movement);
-        //InstantlyTurn(agent.destination);
         characterController.Move(movement * Time.deltaTime * speed);
         if(movement != Vector3.zero)
         {
