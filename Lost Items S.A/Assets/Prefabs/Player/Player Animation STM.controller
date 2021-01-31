@@ -17,10 +17,10 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.048537236
-  m_TransitionOffset: 0
-  m_ExitTime: 0.05318097
-  m_HasExitTime: 1
+  m_TransitionDuration: 0.05219678
+  m_TransitionOffset: 0.027246911
+  m_ExitTime: 0.05318096
+  m_HasExitTime: 0
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -204,7 +204,7 @@ AnimatorStateMachine:
     m_Position: {x: 260, y: 30, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2795659635976417453}
-    m_Position: {x: 660, y: 20, z: 0}
+    m_Position: {x: 660, y: 30, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4266711563717263571}
     m_Position: {x: 440, y: -100, z: 0}
@@ -332,7 +332,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.88095236
+  m_ExitTime: 0.018321263
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -355,9 +355,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0.03715725
-  m_ExitTime: 0.88095236
+  m_TransitionDuration: 0.05203044
+  m_TransitionOffset: 0
+  m_ExitTime: 9.11803e-11
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -453,8 +453,8 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0
-  m_TransitionOffset: 0.05631946
-  m_ExitTime: 0.053572662
+  m_TransitionOffset: 0
+  m_ExitTime: 0.002614688
   m_HasExitTime: 0
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
