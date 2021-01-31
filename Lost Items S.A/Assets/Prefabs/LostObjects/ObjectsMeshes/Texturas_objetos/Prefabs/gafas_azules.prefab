@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 190826574123755958}
   - component: {fileID: 190826574123755955}
   m_Layer: 0
-  m_Name: gafas
+  m_Name: gafas_azules
   m_TagString: LostItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617de1eac79903a43a196df97b719139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lostObjectType: 0
+  lostObjectType: 4
 --- !u!114 &190826574123755955
 MonoBehaviour:
   m_ObjectHideFlags: 0

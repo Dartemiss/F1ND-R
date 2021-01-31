@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5406289335541317349}
   - component: {fileID: 5406289335541317348}
   m_Layer: 0
-  m_Name: pen
+  m_Name: pen_rosa
   m_TagString: LostItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617de1eac79903a43a196df97b719139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lostObjectType: 0
+  lostObjectType: 13
 --- !u!114 &5406289335541317370
 MonoBehaviour:
   m_ObjectHideFlags: 0

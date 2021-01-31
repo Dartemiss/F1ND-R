@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3922670761896508667}
   - component: {fileID: 5852333822277731915}
   m_Layer: 0
-  m_Name: Mechero
+  m_Name: mechero_amarillo
   m_TagString: LostItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617de1eac79903a43a196df97b719139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lostObjectType: 0
+  lostObjectType: 9
 --- !u!54 &5285442127302691214
 Rigidbody:
   m_ObjectHideFlags: 0
