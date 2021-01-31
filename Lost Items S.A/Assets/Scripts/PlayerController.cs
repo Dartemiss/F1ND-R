@@ -18,6 +18,13 @@ public class PlayerController : MonoBehaviour
 
     private bool carryingObject = false;
 
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {

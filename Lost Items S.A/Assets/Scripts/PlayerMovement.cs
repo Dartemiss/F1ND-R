@@ -12,10 +12,17 @@ public class PlayerMovement : MonoBehaviour
     NavMeshAgent agent;
     [SerializeField]
     private const float rotationSpeed = 50f;
+
+    public float currentSpeed;
+    private Animator animator;
+
+    Vector3 lastPosition;
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+        lastPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -25,6 +32,9 @@ public class PlayerMovement : MonoBehaviour
         agent.Move(movement * Time.deltaTime * agent.speed);
         agent.SetDestination(transform.position + movement);
         InstantlyTurn(agent.destination);
+        currentSpeed = Mathf.Lerp(currentSpeed, (transform.position - lastPosition).magnitude, 0.7f);
+        lastPosition = transform.position;
+        animator.SetFloat("Speed", currentSpeed);
     }
 
     public void MovementDirection(Vector2 direction)
