@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class ClientsController : MonoBehaviour
 {
-    const uint maxTypeOfObjects = 3;
+    const uint maxTypeOfObjects = 16;
     List<CommandController> commands = new List<CommandController>();
 
     public GameObject commandPrefab;

@@ -141,13 +141,13 @@ public class PlayerController : MonoBehaviour
 
             //currentTargetedObject.transform.parent = gameObject.transform;
             //currentTargetedObject.transform.position = objectSlot.position;
+            vfx.Play();
             currentLostObject = currentTargetedObject.GetComponent<LostObject>();
             currentLostObject.AtractObject(objectSlot, transform);
             currentTargetedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             currentLostGameObject = currentTargetedObject;
             carryingObject = true;
             animator.SetTrigger("TakingObject");
-            vfx.Play();
         }
     }
 
@@ -165,12 +165,17 @@ public class PlayerController : MonoBehaviour
                 {
                     Debug.Log("Cannot place object here.");
                 }
+                else
+                {
+                    currentLostObject.StopAtraction();
+                }
             }
             //Place it on the ground
             else
             {
                 currentLostGameObject.transform.parent = null;
                 currentLostGameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                currentLostObject.StopAtraction();
             }
 
 
