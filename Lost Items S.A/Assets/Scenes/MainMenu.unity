@@ -345,25 +345,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 23.71, z: 0}
---- !u!1 &1200351394 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1899584899020839242, guid: ca45050c17ddc6946896d255ebfeb110, type: 3}
-  m_PrefabInstance: {fileID: 1899584899182442243}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1200351395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1200351394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 562f2a1805a49ec40ab12fe839d7f406, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerJoinSound: {fileID: 0}
-  pressStartSound: {fileID: 0}
 --- !u!1 &1405251806
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,14 +617,6 @@ PrefabInstance:
     - target: {fileID: 1899584899020839242, guid: ca45050c17ddc6946896d255ebfeb110, type: 3}
       propertyPath: m_Name
       value: MainMenu Sounds
-      objectReference: {fileID: 0}
-    - target: {fileID: 3855048647111233232, guid: ca45050c17ddc6946896d255ebfeb110, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206955167865786233, guid: ca45050c17ddc6946896d255ebfeb110, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca45050c17ddc6946896d255ebfeb110, type: 3}
