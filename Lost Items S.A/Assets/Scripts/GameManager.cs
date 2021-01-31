@@ -93,6 +93,8 @@ public class GameManager : MonoBehaviour
     {
         levelTimer.StartTimer(totalLevelTime);
         isRunning = true;
+        
+        GameObject.Find("Clients").GetComponent<ClientsController>().CreateFirstCommands();
     }
 
     public void CloseGame()

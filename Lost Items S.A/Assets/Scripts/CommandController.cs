@@ -18,7 +18,7 @@ public class CommandController : MonoBehaviour
         commandItems = items;
         items.Sort();
 
-        commandScore = 100 + items.Count * 50;
+        commandScore = 150 + items.Count * 50;
     }
 
     public bool UpdateCommand()
