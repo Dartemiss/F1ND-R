@@ -36,9 +36,4 @@ public class TittleScreenManager : MonoBehaviour
     {
         transform.gameObject.SetActive(false);
     }
-
-    public void Open()
-    {
-        transform.gameObject.SetActive(true);
-    }
 }

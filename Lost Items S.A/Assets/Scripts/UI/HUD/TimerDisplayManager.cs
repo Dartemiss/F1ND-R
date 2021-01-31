@@ -36,6 +36,13 @@ public class TimerDisplayManager : MonoBehaviour
         }
 
         timeText.text = timeInMintuesString + ":" + timeInSecondsString;
-
+        if (time < 60 && time >= 30)
+        {
+            timeText.GetComponent<Animator>().SetTrigger("Hurry");
+        }
+        else if (time < 30)
+        {
+            timeText.GetComponent<Animator>().SetTrigger("HURRYUP");
+        }
     }
 }
