@@ -20,7 +20,7 @@
   </a>
 </p>
 
-![](https://github.com/Dartemiss/F1ND-R/blob/master/Media/gameplay.png)
+![](https://github.com/Dartemiss/F1ND-R/blob/main/Media/gameplay.png)
 
 ## Highlights
 - Game was developed under the theme **Lost and Found**.
