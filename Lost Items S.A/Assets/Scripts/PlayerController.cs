@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour
     LostObject currentLostObject = null;
     GameObject currentLostGameObject = null;
 
-    Transform objectSlot;
-    Transform colliderTransform;
+    public Transform objectSlot;
+    public Transform colliderTransform;
 
     public LayerMask m_LayerMask;
 
@@ -23,13 +23,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        objectSlot = gameObject.transform.GetChild(1).transform;
-        colliderTransform = gameObject.transform.GetChild(2).transform;
     }
 
     // Update is called once per frame
