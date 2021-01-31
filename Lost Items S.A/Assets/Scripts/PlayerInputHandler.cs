@@ -36,17 +36,23 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void Input_onActionTriggered(CallbackContext obj)
     {
-        Debug.Log("Holas");
-        if(obj.action.name == controls.Gameplay.Movement.name)
+
+        if (!MainLevelCanvasManager.instance.tutorialEnded)
+        {
+            MainLevelCanvasManager.instance.ShowHUD();
+            return;
+        }
+
+        if (obj.action.name == controls.Gameplay.Interact.name && obj.performed)
+        {
+           
+           OnInteract();
+        }
+
+        if (obj.action.name == controls.Gameplay.Movement.name)
         {
             OnMove(obj);
         }
-
-        if(obj.action.name == controls.Gameplay.Interact.name && obj.performed)
-        {
-            OnInteract();
-        }
-
     }
 
     public void OnMove(CallbackContext ctx)
