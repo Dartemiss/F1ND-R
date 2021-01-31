@@ -77,7 +77,10 @@ public class PlayerConfigurationManager : MonoBehaviour
                 }
                 MainMenuManager.instance.SetPlayerOneInputType(inputType);
             }
-
+            else
+            {
+                MainMenuSoundManager.instance.PlayPlayerJoinSound();
+            }
             ++currentPlayers;
         }
     }
