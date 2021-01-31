@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 
@@ -31,6 +32,8 @@ public class PlayerSelectionManager : MonoBehaviour
     public GameObject startButton;
 
     public List<PlayerCardManager> playerCards;
+    public Sprite keyboardStartSprite;
+    public Sprite controllerStartSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -79,5 +82,18 @@ public class PlayerSelectionManager : MonoBehaviour
     public InputSystemUIInputModule GetStartGameUIInput()
     {
         return startButton.GetComponent<InputSystemUIInputModule>();
+    }
+
+    public void SetPlayerOneInputType(InputType inputType)
+    {
+        if (inputType == InputType.CONTROLLER)
+        {
+            startButton.GetComponent<Image>().sprite = controllerStartSprite;
+        }
+        else
+        {
+            startButton.GetComponent<Image>().sprite = keyboardStartSprite;
+        }
+        startButton.GetComponent<Image>().SetNativeSize();
     }
 }
