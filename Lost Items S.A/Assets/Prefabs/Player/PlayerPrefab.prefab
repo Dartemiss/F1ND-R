@@ -2413,10 +2413,6 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4255133476147814245, guid: 4f6ce48e070d96f48bcb2517ae4cd955, type: 3}
-      propertyPath: simulationSpeed
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4255133476147814245, guid: 4f6ce48e070d96f48bcb2517ae4cd955, type: 3}
       propertyPath: moveWithTransform
       value: 2
       objectReference: {fileID: 0}
