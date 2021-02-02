@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     private FlamaTimer levelTimer;
     public int currentScore = 0;
-    float totalLevelTime = 300f;
+    float totalLevelTime = 30f;
 
     List<float> goalStarScores = new List<float>(){2500, 4500, 10000};
     int numberOfStars = 0;
@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
                     break;
                 }
             }
-
 
             //End game
             isRunning = false;
