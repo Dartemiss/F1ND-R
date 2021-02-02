@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
     public int currentScore = 0;
     float totalLevelTime = 30f;
 
-    List<float> goalStarScores = new List<float>(){2500, 4500, 10000};
-    int numberOfStars = 0;
+    List<float> goalStarScores = new List<float>(){250, 3000, 6000};
+    public static int numberOfStars = 0;
 
     // Start is called before the first frame update
     void Awake()
@@ -59,8 +59,11 @@ public class GameManager : MonoBehaviour
             //End game
             isRunning = false;
             Debug.Log("You gained " + numberOfStars +  "stars, congratulations!");
-            SceneManager.LoadScene(0);
-            PlayerConfigurationManager.Instance.RestartDevices();
+
+            //load score screen and show stars
+
+            SceneManager.LoadScene(2);
+            //PlayerConfigurationManager.Instance.RestartDevices(); this goes to FinalScore ->  Main Menu Button :D
         }
         else if(levelTimer.GetTimeRemaining() <= 30f)
         {
@@ -81,7 +84,7 @@ public class GameManager : MonoBehaviour
             currentScore = 0;
         }
     }
-
+    public int GetNumberStars() { return numberOfStars; }
     public void LoadMainLevel()
     {
         PlayerConfigurationManager.Instance.playerInputManager.DisableJoining();
