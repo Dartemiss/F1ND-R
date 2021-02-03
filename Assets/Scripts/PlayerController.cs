@@ -134,6 +134,7 @@ public class PlayerController : MonoBehaviour
 
         if (currentTargetedObject.tag == "LostItem")
         {
+            animator.SetTrigger("TakingObject");
             LevelSoundManager.instance.PlayPickupSound();
 
             //Check if object is in Counter
@@ -141,13 +142,14 @@ public class PlayerController : MonoBehaviour
 
             //currentTargetedObject.transform.parent = gameObject.transform;
             //currentTargetedObject.transform.position = objectSlot.position;
+            
             vfx.Play();
             currentLostObject = currentTargetedObject.GetComponent<LostObject>();
             currentLostObject.AtractObject(objectSlot, transform);
             currentTargetedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             currentLostGameObject = currentTargetedObject;
             carryingObject = true;
-            animator.SetTrigger("TakingObject");
+
         }
     }
 
