@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class FinalScore : MonoBehaviour
 {
@@ -59,7 +60,10 @@ public class FinalScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Keyboard.current.spaceKey.wasPressedThisFrame== true)
+        {
+            GoToMainMenu();
+        }
     }
     public void GoToMainMenu()
     {
